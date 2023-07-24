@@ -1,26 +1,14 @@
-# Template for Django 4.2.3 using Docker (with Nginx, Gunicorn and PostgreSQL)
+# 중앙 해커톤
 
-> I originally created this as a template for my own projects,
-> but I decided to make it public in case anyone else finds it useful.
-> Feel free to use it as a template for your own projects.
-> If you have any suggestions for improvements, please let me know.
-> I'm always looking for ways to improve my workflow.
+### 팀원
+
+> 기획 - 서의정
 >
-> Thanks!
+> 디자인 - 양정민
 >
-> "GeumJang Ahn" from South Korea
-
-## Requirements
-
-- Docker
-- Docker Compose
-
-## Installation
-
-```
-git clone
-set .env ('/' and '/webapp')
-```
+> 프론트엔드 - 김우림 / 이인
+>
+> 백엔드 - 안금장 / 임장혁
 
 ## Commands
 

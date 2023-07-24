@@ -1,5 +1,0 @@
-# Docker environment variables
-
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=db-password
-POSTGRES_PORT=5432
