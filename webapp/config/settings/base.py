@@ -28,8 +28,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 DJANGO_APPS = [
-    'rest_framework',
-    'drf_yasg',
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,6 +38,9 @@ DJANGO_APPS = [
 ]
 
 PACKAGE_APPS = [
+    'rest_framework',
+    'drf_yasg',
+    'corsheaders'
 ]
 
 PROJECT_APPS = [
@@ -49,6 +50,7 @@ PROJECT_APPS = [
 INSTALLED_APPS = DJANGO_APPS + PACKAGE_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -127,3 +129,6 @@ STATIC_ROOT = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
