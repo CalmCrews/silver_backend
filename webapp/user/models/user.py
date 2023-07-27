@@ -35,6 +35,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name='유저 아이디',
         unique=True,
         max_length=20,
+        null=True,
+        blank=True,
+    )
+
+    kakaoId = models.CharField(
+        verbose_name='카카오 아이디',
+        unique=True,
+        max_length=20,
+        null=True,
+        blank=True,
     )
 
     profile_image = models.ImageField(
@@ -55,6 +65,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
 
     objects = UserManager()
+
+    def __str__(self):
+        if self.username:
+            return f"기본 로그인 : {self.username}"
+        if self.kakaoId:
+            return f"카카오 로그인 : {self.kakaoId}"
 
     @property
     def is_staff(self):
