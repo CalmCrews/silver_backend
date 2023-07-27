@@ -8,9 +8,11 @@ from user.serializers import LoginSerializer
 
 
 class LoginAPIView(APIView):
+    serializer_class = LoginSerializer
+
     def post(self, request):
         user = authenticate(
-            email=request.data.get("email"),
+            username=request.data.get("username"),
             password=request.data.get("password")
         )
         if user is not None:
@@ -30,5 +32,5 @@ class LoginAPIView(APIView):
                 status=status.HTTP_200_OK,
             )
             return res
-        else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+        failed_res = {"message": "로그인 실패"}
+        return Response(failed_res, status=400)
