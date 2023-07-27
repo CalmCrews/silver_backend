@@ -37,24 +37,17 @@ def kakaoCallback(request):
     access_token = token_response.json().get('access_token')
     user_info_response = requests.get('https://kapi.kakao.com/v2/user/me', headers={"Authorization": f'Bearer {access_token}'})
     profile_json = user_info_response.json()
-    print(profile_json)
     kakaoId = profile_json.get("id")
-    print(kakaoId)
 
     if kakaoId is not None:
         if User.objects.filter(kakaoId=kakaoId).exists():
-            print("111111")
-            print(User.objects.filter(kakaoId=kakaoId))
-            # user_info = User.objects.get(kakaoId=kakaoId)
-
+            user_info = User.objects.get(kakaoId=kakaoId)
             refresh = RefreshToken.for_user(user_info)
-            print(refresh.access_token)
-            return HttpResponse(f' token:{access_token}')
+            return HttpResponse(f'user:{user_info}, access_token:{str(refresh.access_token)}')
 
         else:
-            print("22222")
             User(kakaoId=kakaoId).save()
             user_info = User.objects.get(kakaoId=kakaoId)
-            isMember = False
-            return HttpResponse(f'user:{user_info}, token:{access_token}')
+            refresh = RefreshToken.for_user(user_info)
+            return HttpResponse(f'user:{user_info}, access_token:{str(refresh.access_token)}')
     return HttpResponse("kakaoId is None")
