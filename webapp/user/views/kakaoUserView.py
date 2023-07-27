@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.response import Response
 
 from user.models import User
 
@@ -43,11 +44,17 @@ def kakaoCallback(request):
         if User.objects.filter(kakaoId=kakaoId).exists():
             user_info = User.objects.get(kakaoId=kakaoId)
             refresh = RefreshToken.for_user(user_info)
-            return HttpResponse(f'user:{user_info}, access_token:{str(refresh.access_token)}')
+            res = {
+                "access_token": f"{str(refresh.access_token)}",
+            }
+            return Response(res, status=200)
 
         else:
             User(kakaoId=kakaoId).save()
             user_info = User.objects.get(kakaoId=kakaoId)
             refresh = RefreshToken.for_user(user_info)
-            return HttpResponse(f'user:{user_info}, access_token:{str(refresh.access_token)}')
-    return HttpResponse("kakaoId is None")
+            res = {
+                "access_token": f"{str(refresh.access_token)}",
+            }
+            return Response(res, status=201)
+    return Response({"message": "kakaoId가 존재하지 않습니다."}, status=400)

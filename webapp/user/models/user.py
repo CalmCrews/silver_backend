@@ -68,9 +68,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         if self.username:
-            return f"기본 로그인 : {self.username}"
+            return f"{self.username} + (기본)"
         if self.kakaoId:
-            return f"카카오 로그인 : {self.kakaoId}"
+            return f"{self.kakaoId} + (카카오)"
 
     @property
     def is_staff(self):
