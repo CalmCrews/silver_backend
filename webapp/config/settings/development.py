@@ -3,6 +3,8 @@ from .base import *  # noqa pylint: disable=wildcard-import, unused-wildcard-imp
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
+BACKEND_URL = "http://localhost:8888"
+
 DATABASES = (
     {
         'default': {
@@ -15,3 +17,8 @@ DATABASES = (
         }
     }
 )
+
+KAKAO_CONFIG = {
+    "KAKAO_REST_API_KEY": os.environ.get("KAKAO_REST_API_KEY"),
+    "KAKAO_REDIRECT_URI": f"{BACKEND_URL}/users/kakao/callback/",
+}
