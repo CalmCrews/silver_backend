@@ -14,3 +14,6 @@ class ProductAnswer(BaseModel):
         null=False,
         blank=True,
     )
+
+    def __str__(self):
+        return self.content[:10]
