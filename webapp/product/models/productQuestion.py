@@ -21,3 +21,6 @@ class ProductQuestion(BaseModel):
         null=False,
         blank=True,
     )
+
+    def __str__(self):
+        return self.title
