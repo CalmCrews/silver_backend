@@ -137,6 +137,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'user.User'
 
 REST_FRAMEWORK = {
+    'DATETIME_FORMAT': "%Y-%m-%d / %H:%M:%S",
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'config.authentications.CsrfExemptSessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
