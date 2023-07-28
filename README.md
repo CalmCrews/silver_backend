@@ -45,5 +45,5 @@ docker-compose run --rm webapp python manage.py createsuperuser
 ```
 
 ### ERD
-![image](https://github.com/CalmCrews/silver_backend/assets/90228925/b9fa6511-dff6-4181-8a53-2169b7e7b9f3)
+![moyeo (2)](https://github.com/CalmCrews/silver_backend/assets/90228925/8851975f-4f85-4b2b-bc3e-27951881d5f1)
 

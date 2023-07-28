@@ -44,7 +44,14 @@ def kakaoCallback(request):
             user_info = User.objects.get(kakaoId=kakaoId)
             refresh = RefreshToken.for_user(user_info)
             res = {
-                "access_token": f"{str(refresh.access_token)}",
+                "user": {
+                    "id": user_info.id,
+                    "kakaoId": user_info.kakaoId,
+                },
+                "token": {
+                    "access": f"{str(refresh.access_token)}",
+                    "refresh": f"{str(refresh)}"
+                }
             }
             return Response(res, status=200)
 
@@ -53,7 +60,14 @@ def kakaoCallback(request):
             user_info = User.objects.get(kakaoId=kakaoId)
             refresh = RefreshToken.for_user(user_info)
             res = {
-                "access_token": f"{str(refresh.access_token)}",
+                "user": {
+                    "id": user_info.id,
+                    "kakaoId": user_info.kakaoId,
+                },
+                "token": {
+                    "access": f"{str(refresh.access_token)}",
+                    "refresh": f"{str(refresh)}"
+                }
             }
             return Response(res, status=201)
     return Response({"message": "kakaoId가 존재하지 않습니다."}, status=400)
