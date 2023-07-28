@@ -50,6 +50,18 @@ class Product(BaseModel):
         blank=True,
     )
 
+    thumbnail = models.ImageField(
+        verbose_name='상품 썸네일',
+        null=False,
+        blank=True,
+    )
+
+    video = models.FileField(
+        verbose_name='상품 영상',
+        null=False,
+        blank=True,
+    )
+
     seller = models.CharField(
         verbose_name='판매자',
         max_length=255,
