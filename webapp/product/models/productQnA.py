@@ -39,6 +39,6 @@ class ProductQnA(BaseModel):
         'product.ProductAnswer',
         verbose_name='답변',
         on_delete=models.CASCADE,
-        null=False,
+        null=True,
         blank=True,
     )
