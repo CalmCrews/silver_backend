@@ -8,8 +8,6 @@ class ClubTagSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ClubSerializer(serializers.ModelSerializer):
-    club_tags = ClubTagSerializer(many=True)  # Assuming you have a ForeignKey from Club to ClubTag
-
     class Meta:
         model = Club
         fields = '__all__'
