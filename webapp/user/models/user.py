@@ -42,7 +42,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     kakaoId = models.CharField(
         verbose_name='카카오 아이디',
         unique=True,
-        max_length=20,
+        max_length=255,
+        null=True,
+        blank=True,
+    )
+
+    naverId = models.CharField(
+        verbose_name='네이버 아이디',
+        unique=True,
+        max_length=255,
         null=True,
         blank=True,
     )
