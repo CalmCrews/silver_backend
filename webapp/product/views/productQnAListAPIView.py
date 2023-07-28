@@ -26,6 +26,7 @@ class ProductQnAListAPIView(ListAPIView):
             serializer = self.get_serializer(page, many=True)
             return self.get_paginated_response(serializer.data)
 
+        # TODO: 프론트 요청에 맞추어 user, product 정보 추가
         serializer = self.get_serializer(queryset, many=True)
         user = str(self.request.user)
         product = self.get_product().name
