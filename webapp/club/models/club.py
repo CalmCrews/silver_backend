@@ -1,14 +1,7 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from config.models import BaseModel
 import random
-
-club_grade = [
-    ('동산', 'First'),
-    ('청계산', 'Second'),
-    ('설악산', 'Third'),
-    ('지리산', 'Fourth'),
-    ('한라산', 'Fifth'),
-]
 
 
 # Create your models here.
@@ -32,10 +25,13 @@ class Club(BaseModel):
         verbose_name='모임 소개',
         max_length=60
     )
-    grade = models.CharField(
+    level = models.IntegerField(
         verbose_name='모임 등급',
-        choices=club_grade,
-        default='동산',
+        validators=[
+            MinValueValidator(0),
+            MaxValueValidator(5)
+        ],
+        default=0,
     )
 
     def save(self, *args, **kwargs):
