@@ -1,8 +1,8 @@
 from rest_framework.generics import ListAPIView
+from rest_framework.response import Response
 
 from product.models import Product, ProductQnA
 from product.serializers import ProductQnASerializer
-from rest_framework.response import Response
 
 
 class ProductQnAListAPIView(ListAPIView):
