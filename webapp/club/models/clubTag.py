@@ -10,10 +10,9 @@ class ClubTag(BaseModel):
         verbose_name = 'ClubTag'
         verbose_name_plural = 'ClubTags'
 
-    club = models.ForeignKey(
+    club = models.OneToOneField(
         Club,
         on_delete=models.CASCADE,
-        unique=True,
         verbose_name='모임명',
         related_name='club_tags',
     )
