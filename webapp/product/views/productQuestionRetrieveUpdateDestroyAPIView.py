@@ -1,6 +1,7 @@
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
 
 from product.models import ProductQuestion, ProductQnA, Product
+from product.permissions import IsProductQuestionOwner
 from product.serializers import ProductQuestionSerializer
 
 
@@ -8,6 +9,7 @@ class ProductQuestionRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = ProductQuestion.objects.all()
     serializer_class = ProductQuestionSerializer
     lookup_url_kwarg = 'product_question_id'
+    permission_classes = [IsProductQuestionOwner]
 
     def get_queryset(self):
         queryset = ProductQuestion.objects.filter(id=self.kwargs.get('product_question_id'))
