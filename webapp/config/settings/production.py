@@ -23,6 +23,12 @@ KAKAO_CONFIG = {
     "KAKAO_REDIRECT_URI": f"{BACKEND_URL}/users/kakao/callback/",
 }
 
+NAVER_CONFIG = {
+    "NAVER_CLIENT_ID": os.environ.get("NAVER_CLIENT_ID_PRODUCTION"),
+    "NAVER_CLIENT_SECRET": os.environ.get("NAVER_CLIENT_SECRET_PRODUCTION"),
+    "NAVER_REDIRECT_URI": f"{BACKEND_URL}/users/naver/callback/",
+}
+
 CSRF_TRUSTED_ORIGINS = [
     BACKEND_URL,
 ]
