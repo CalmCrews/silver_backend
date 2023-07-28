@@ -13,7 +13,7 @@ class ProductQuestionCreateAPIView(CreateAPIView):
         ProductQnA.objects.create(
             product=self.get_product(),
             user=self.request.user,
-            question=serializer.data['id']
+            question=serializer.instance,
         )
 
     def get_product(self):

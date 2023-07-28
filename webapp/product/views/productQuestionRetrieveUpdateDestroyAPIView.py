@@ -10,10 +10,11 @@ class ProductQuestionRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     lookup_url_kwarg = 'product_question_id'
 
     def get_queryset(self):
-        queryset = ProductQuestion.objects.filter(user=self.request.user)
+        queryset = ProductQuestion.objects.filter(id=self.kwargs.get('product_question_id'))
         return queryset
 
     def perform_destroy(self, instance):
+        instance.delete()
         ProductQnA.objects.filter(
             product=self.get_product(),
             user=self.request.user,
