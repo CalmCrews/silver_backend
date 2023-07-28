@@ -22,3 +22,9 @@ KAKAO_CONFIG = {
     "KAKAO_REST_API_KEY": os.environ.get("KAKAO_REST_API_KEY"),
     "KAKAO_REDIRECT_URI": f"{BACKEND_URL}/users/kakao/callback/",
 }
+
+NAVER_CONFIG = {
+    "NAVER_CLIENT_ID": os.environ.get("NAVER_CLIENT_ID_LOCAL"),
+    "NAVER_CLIENT_SECRET": os.environ.get("NAVER_CLIENT_SECRET_LOCAL"),
+    "NAVER_REDIRECT_URI": f"{BACKEND_URL}/users/naver/callback/",
+}
