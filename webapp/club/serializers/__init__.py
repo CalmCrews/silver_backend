@@ -1,2 +1,2 @@
-from .clubSerializer import ClubSerializer, ClubTagSerializer
-from .clubListSerializer import ClubListSerializer, ClubTagListSerializer
+from .clubSerializer import ClubSerializer
+from .clubListSerializer import ClubTagListSerializer
