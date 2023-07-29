@@ -1,11 +1,13 @@
 from rest_framework import serializers
 
 from order.models import Order
+from product.serializers import ProductAbstractSerializer
 
 
 class OrderSerializer(serializers.ModelSerializer):
     total_initial_price = serializers.SerializerMethodField()
     total_final_price = serializers.SerializerMethodField()
+    product = ProductAbstractSerializer(read_only=True)
 
     class Meta:
         model = Order

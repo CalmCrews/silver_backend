@@ -3,7 +3,7 @@ from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
 
 from order.models import Order
-from order.serializers.orderSerializer import OrderSerializer
+from order.serializers import OrderSerializer
 from product.models import Product
 
 
