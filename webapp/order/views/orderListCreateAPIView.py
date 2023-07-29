@@ -1,4 +1,5 @@
-from rest_framework.generics import CreateAPIView
+from django.shortcuts import get_object_or_404
+from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
 
 from order.models import Order
@@ -6,9 +7,12 @@ from order.serializers.orderSerializer import OrderSerializer
 from product.models import Product
 
 
-class OrderCreateAPIView(CreateAPIView):
-    queryset = Order.objects.all()
+class OrderListCreateAPIView(ListCreateAPIView):
     serializer_class = OrderSerializer
+
+    def get_queryset(self):
+        queryset = Order.objects.filter(user=self.request.user, product=self.get_product())
+        return queryset
 
     def perform_create(self, serializer):
         product = self.get_product()
@@ -32,5 +36,5 @@ class OrderCreateAPIView(CreateAPIView):
 
     def get_product(self):
         product_id = self.kwargs.get('product_id')
-        product = Product.objects.get(id=product_id)
+        product = get_object_or_404(Product, id=product_id)
         return product
