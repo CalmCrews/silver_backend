@@ -46,14 +46,14 @@ class Order(BaseModel):
     )
 
     initial_price = models.IntegerField(
-        verbose_name='초기 가격',
+        verbose_name='1개당 초기 가격',
         null=False,
         blank=True,
         default=0,
     )
 
     final_price = models.IntegerField(
-        verbose_name='최종 가격',
+        verbose_name='1개당 최종 가격',
         null=True,
         blank=True,
     )
