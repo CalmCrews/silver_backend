@@ -1,7 +1,6 @@
 from django.db import models
 
 from config.models import BaseModel
-from product.models import Product
 from user.models import User
 
 ORDER_STATUS = (
@@ -24,7 +23,7 @@ class Order(BaseModel):
     )
 
     product = models.ForeignKey(
-        Product,
+        'product.Product',
         verbose_name='상품',
         on_delete=models.SET_NULL,
         null=True,
@@ -46,14 +45,26 @@ class Order(BaseModel):
     )
 
     initial_price = models.IntegerField(
-        verbose_name='초기 가격',
+        verbose_name='1개당 초기 가격',
         null=False,
         blank=True,
         default=0,
     )
 
     final_price = models.IntegerField(
-        verbose_name='최종 가격',
+        verbose_name='1개당 최종 가격',
         null=True,
         blank=True,
     )
+
+    @property
+    def total_initial_price(self):
+        if self.initial_price:
+            return int(self.quantity) * int(self.initial_price)
+        return 0
+
+    @property
+    def total_final_price(self):
+        if self.final_price:
+            return int(self.quantity) * int(self.final_price)
+        return 0

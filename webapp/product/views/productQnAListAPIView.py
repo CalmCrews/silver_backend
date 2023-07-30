@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 
@@ -12,11 +13,6 @@ class ProductQnAListAPIView(ListAPIView):
     def get_queryset(self):
         queryset = ProductQnA.objects.filter(user=self.request.user, product=self.get_product())
         return queryset
-
-    def get_product(self):
-        product_id = self.kwargs.get('product_id')
-        product = Product.objects.get(id=product_id)
-        return product
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
@@ -37,3 +33,8 @@ class ProductQnAListAPIView(ListAPIView):
         }
 
         return Response(res)
+
+    def get_product(self):
+        product_id = self.kwargs.get('product_id')
+        product = get_object_or_404(Product, id=product_id)
+        return product
