@@ -44,6 +44,7 @@ PACKAGE_APPS = [
     'corsheaders',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
+    'django_crontab',
 ]
 
 PROJECT_APPS = [
@@ -157,3 +158,7 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
     'TOKEN_USER_CLASS': 'user.User',
 }
+
+CRONJOBS = [
+    ('*/1 * * * *', 'order.scheduler.order_close_logic', '>> ../var/log/cron.log'),
+]

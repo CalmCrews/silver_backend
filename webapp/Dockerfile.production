@@ -4,6 +4,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get -y update
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install gcc
+RUN apt-get -y install --no-install-recommends cron
 
 FROM builder as package
 
