@@ -25,6 +25,20 @@ class OrderListCreateAPIView(ListCreateAPIView):
         if serializer.instance.final_price is None:
             serializer.instance.final_price = product.price
             serializer.save()
+        user = self.request.user
+        if user.balance < serializer.instance.total_initial_price:
+            return "failed"
+        user.balance -= serializer.instance.total_initial_price
+        user.save()
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        if self.perform_create(serializer) == "failed":
+            serializer.instance.delete()
+            return Response({'message': '잔액이 부족합니다'}, status=400)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=201, headers=headers)
 
     def post(self, request, *args, **kwargs):
         product = self.get_product()
