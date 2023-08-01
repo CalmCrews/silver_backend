@@ -72,6 +72,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         auto_now=True,
     )
 
+    balance = models.PositiveIntegerField(
+        verbose_name='잔액',
+        default=0,
+    )
+
     objects = UserManager()
 
     def __str__(self):

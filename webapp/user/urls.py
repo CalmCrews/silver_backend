@@ -1,6 +1,7 @@
 from django.urls import path
 
 from user.views import RegisterAPIView, LoginAPIView, LogoutAPIView, kakaoCallback, kakaoGetLogin, naverGetLogin, naverCallback
+from order.views import MyOrderListForAllProductsAPIView
 
 urlpatterns = [
     path("register/", RegisterAPIView.as_view()),
@@ -10,4 +11,5 @@ urlpatterns = [
     path('kakao/callback/', kakaoCallback, name="kakaoCallback"),
     path('naver/login/', naverGetLogin),
     path('naver/callback/', naverCallback, name="naverCallback"),
+    path('myorders/', MyOrderListForAllProductsAPIView.as_view()),
 ]

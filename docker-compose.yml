@@ -7,6 +7,7 @@ services:
       - ./webapp:/src
       - staticfiles:/src/static
       - mediafiles:/src/media
+      - ./log:/var/log/
     build:
       context: ./webapp
       dockerfile: ./Dockerfile
@@ -17,6 +18,7 @@ services:
       bash -c "python ./manage.py makemigrations --noinput &&
                python ./manage.py migrate --noinput &&
                python ./manage.py collectstatic --noinput &&
+               service cron start && python manage.py crontab add &&
                python ./manage.py runserver 0.0.0.0:8888"
     depends_on:
       - db

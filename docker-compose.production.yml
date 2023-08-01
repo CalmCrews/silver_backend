@@ -7,6 +7,7 @@ services:
       - ./webapp:/src
       - staticfiles:/src/static
       - mediafiles:/src/media
+      - ./log:/var/log/
     build:
       context: ./webapp
       dockerfile: ./Dockerfile.production
