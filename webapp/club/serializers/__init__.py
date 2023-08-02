@@ -1,2 +1,3 @@
 from .clubSerializer import ClubSerializer
-from .clubListSerializer import ClubTagListSerializer
+from .clubListSerializer import ClubListSerializer
+from .clubRetrieveSerializer import ClubRetrieveSerializer

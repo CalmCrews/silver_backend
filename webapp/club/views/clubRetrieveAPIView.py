@@ -1,12 +1,25 @@
-from django.shortcuts import render
-from requests import Response
-from rest_framework.generics import RetrieveAPIView
-
+from rest_framework.generics import RetrieveUpdateAPIView
+from rest_framework.response import Response
 from club.models import ClubTag
-from club.serializers import ClubSerializer
+from club.serializers import ClubRetrieveSerializer
 
-
-class ClubRetrieveAPIView(RetrieveAPIView):
+class ClubRetrieveAPIView(RetrieveUpdateAPIView):
     queryset = ClubTag.objects.all()
-    serializer_class = ClubSerializer
+    serializer_class = ClubRetrieveSerializer
     lookup_url_kwarg = 'club_id'
+
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        club = instance.club
+
+        name = request.data.get('club_name')
+        intro = request.data.get('club_intro')
+        tag = request.data.get('clubtag')
+
+        if name:
+            club.name = name
+        if intro:
+            club.intro = intro
+        club.save()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)

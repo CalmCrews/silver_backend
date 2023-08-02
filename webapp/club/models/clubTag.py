@@ -62,31 +62,31 @@ class ClubTag(BaseModel):
     )
 
     @property
-    def clubtag(self):
+    def club_tag(self):
+        club_tags = []
         if self.gathering:
-            return 'gathering'
+            club_tags.append('gathering')
         elif self.daily:
-            return 'daily'
+            club_tags.append('daily')
         elif self.economic:
-            return 'economic'
+            club_tags.append('economic')
         elif self.biology:
-            return 'biology'
+            club_tags.append('biology')
         elif self.culture:
-            return 'culture'
+            club_tags.append('culture')
         elif self.study:
-            return 'study'
+            club_tags.append('study')
         elif self.life:
-            return 'life'
+            club_tags.append('life')
         elif self.sports:
-            return 'sports'
+            club_tags.append('sports')
         elif self.religion:
-            return 'religion'
+            club_tags.append('religion')
         elif self.health:
-            return 'health'
+            club_tags.append('health')
         elif self.etc:
-            return 'etc'
-        else:
-            return 'none'
+            club_tags.append('etc')
+        return club_tags
 
 
 
