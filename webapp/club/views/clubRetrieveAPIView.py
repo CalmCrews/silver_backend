@@ -1,10 +1,10 @@
 from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.response import Response
-from club.models import ClubTag
+from club.models import Club
 from club.serializers import ClubRetrieveSerializer
 
 class ClubRetrieveAPIView(RetrieveUpdateAPIView):
-    queryset = ClubTag.objects.all()
+    queryset = Club.objects.all()
     serializer_class = ClubRetrieveSerializer
     lookup_url_kwarg = 'club_id'
 
@@ -22,3 +22,4 @@ class ClubRetrieveAPIView(RetrieveUpdateAPIView):
         club.save()
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
+

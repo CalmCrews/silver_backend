@@ -1,24 +1,27 @@
 # club/serializers.py
 from rest_framework import serializers
-from club.models import ClubTag
+from club.models import Club, ClubTag
+
 
 class ClubRetrieveSerializer(serializers.ModelSerializer):
-    club_name = serializers.SerializerMethodField()
-    club_level = serializers.SerializerMethodField()
+    club_tag = serializers.SerializerMethodField()
     class Meta:
-        model = ClubTag
+        model = Club
         fields = (
             'id',
-            'club_name',
-            'club_level',
+            'name',
+            'intro',
+            'level',
             'club_tag',
         )
 
-    def get_club_name(self, obj):
-        return obj.club.name
+        read_only_fields = (
+            'level',
+        )
 
-    def get_club_level(self, obj):
-        return obj.club.level
+    def get_club_tag(self, obj):
+        club_tag = ClubTag.objects.get(club=obj)
+        return club_tag.club_tag
 
 
 

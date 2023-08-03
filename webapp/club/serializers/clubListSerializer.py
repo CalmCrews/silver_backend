@@ -8,12 +8,17 @@ class ClubListSerializer(serializers.ModelSerializer):
     club_tags = serializers.SerializerMethodField()
     class Meta:
         model = Club
-        fields = [
+        fields = (
             'name',
-            'level',
             'intro',
+            'level',
             'club_tags',
-        ]
+        )
+
+        read_only_fields = (
+            'level',
+        )
+
 
     def get_club_tags(self, obj):
         club_tags = ClubTag.objects.filter(club=obj)
