@@ -25,8 +25,8 @@ class UserClub(BaseModel):
     )
 
     nickname = models.CharField(
-        unique=True,
         max_length=30,
+        null=True,
     )
 
     is_owner = models.BooleanField(

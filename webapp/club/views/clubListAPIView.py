@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
 
-from club.models import ClubTag, UserClub
+from club.models import UserClub
 from club.serializers import ClubListSerializer, ClubTagSerializer, UserClubSerializer
 
 class ClubListAPIView(ListCreateAPIView):
@@ -19,7 +19,7 @@ class ClubListAPIView(ListCreateAPIView):
         user_club_data = {
             'user': self.request.user.id,
             'club': club_instance.id,
-            'nickname': self.request.data.get('nickname')
+            'is_owner': True,
         }
 
         user_club_serializer = UserClubSerializer(data=user_club_data)
