@@ -11,6 +11,7 @@ class ClubListSerializer(serializers.ModelSerializer):
         fields = [
             'name',
             'level',
+            'intro',
             'club_tags',
         ]
 
