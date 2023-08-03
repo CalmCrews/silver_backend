@@ -14,7 +14,6 @@ class ClubRetrieveAPIView(RetrieveUpdateAPIView):
 
         name = request.data.get('club_name')
         intro = request.data.get('club_intro')
-        tag = request.data.get('clubtag')
 
         if name:
             club.name = name

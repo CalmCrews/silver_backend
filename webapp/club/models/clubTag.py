@@ -66,25 +66,25 @@ class ClubTag(BaseModel):
         club_tags = []
         if self.gathering:
             club_tags.append('gathering')
-        elif self.daily:
+        if self.daily:
             club_tags.append('daily')
-        elif self.economic:
+        if self.economic:
             club_tags.append('economic')
-        elif self.biology:
+        if self.biology:
             club_tags.append('biology')
-        elif self.culture:
+        if self.culture:
             club_tags.append('culture')
-        elif self.study:
+        if self.study:
             club_tags.append('study')
-        elif self.life:
+        if self.life:
             club_tags.append('life')
-        elif self.sports:
+        if self.sports:
             club_tags.append('sports')
-        elif self.religion:
+        if self.religion:
             club_tags.append('religion')
-        elif self.health:
+        if self.health:
             club_tags.append('health')
-        elif self.etc:
+        if self.etc:
             club_tags.append('etc')
         return club_tags
 
