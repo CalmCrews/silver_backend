@@ -7,3 +7,8 @@ class UserClubSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserClub
         fields = '__all__'
+        read_only_fields = (
+            'user',
+            'club',
+            'is_owner',
+        )
