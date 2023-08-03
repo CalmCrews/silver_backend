@@ -1,7 +1,9 @@
-from django.db import models
-from config.models import BaseModel
-from django.core.validators import MinValueValidator, MaxValueValidator
 import random
+
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.db import models
+
+from config.models import BaseModel
 
 
 # Create your models here.

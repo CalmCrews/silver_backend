@@ -5,7 +5,8 @@ from rest_framework.response import Response
 from club.models import UserClub
 from club.serializers import ClubListSerializer, ClubTagSerializer, UserClubSerializer
 
-class ClubListAPIView(ListCreateAPIView):
+
+class ClubListCreateAPIView(ListCreateAPIView):
     serializer_class = ClubListSerializer
 
     def get_queryset(self):

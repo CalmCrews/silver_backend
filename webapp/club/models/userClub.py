@@ -1,7 +1,8 @@
 from django.db import models
-from user.models import User
+
 from club.models import Club
 from config.models import BaseModel
+from user.models import User
 
 
 class UserClub(BaseModel):

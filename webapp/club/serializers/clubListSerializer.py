@@ -1,7 +1,7 @@
 # club/serializers.py
 from rest_framework import serializers
+
 from club.models import Club, ClubTag
-from club.serializers.clubTagSerializer import ClubTagSerializer
 
 
 class ClubListSerializer(serializers.ModelSerializer):
