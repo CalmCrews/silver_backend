@@ -1,12 +1,12 @@
 from rest_framework.generics import UpdateAPIView
 
 from club.models import UserClub
-from club.serializers import UserClubSerializer
+from club.serializers import UserClubNicknameSerializer
 
 
 class UserClubNicknameUpdateAPIView(UpdateAPIView):
     queryset = UserClub.objects.all()
-    serializer_class = UserClubSerializer
+    serializer_class = UserClubNicknameSerializer
     lookup_url_kwarg = 'club_id'
 
     def get_queryset(self):
