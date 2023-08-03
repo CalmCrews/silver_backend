@@ -9,7 +9,6 @@ class ClubListAPIView(ListCreateAPIView):
     serializer_class = ClubListSerializer
 
     def get_queryset(self):
-        # Retrieve the UserClub queryset with related Club and ClubTag data
         userclubs = UserClub.objects.filter(user=self.request.user).select_related('club__club_tags')
         clubs = [userclub.club for userclub in userclubs]
         return clubs
@@ -20,7 +19,9 @@ class ClubListAPIView(ListCreateAPIView):
         user_club_data = {
             'user': self.request.user.id,
             'club': club_instance.id,
+            'nickname': self.request.data.get('nickname')
         }
+
         user_club_serializer = UserClubSerializer(data=user_club_data)
         user_club_serializer.is_valid(raise_exception=True)
         user_club_serializer.save()
