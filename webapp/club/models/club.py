@@ -47,3 +47,5 @@ class Club(BaseModel):
             if not Club.objects.filter(code=new_code).exists():
                 return new_code
 
+    def __str__(self):
+        return self.name
