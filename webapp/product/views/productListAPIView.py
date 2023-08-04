@@ -7,3 +7,6 @@ from product.serializers import ProductListSerializer
 class ProductListAPIView(ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductListSerializer
+    filterset_fields = [
+        'category',
+    ]
