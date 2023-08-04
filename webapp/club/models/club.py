@@ -1,7 +1,9 @@
-from django.db import models
-from config.models import BaseModel
-from django.core.validators import MinValueValidator, MaxValueValidator
 import random
+
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.db import models
+
+from config.models import BaseModel
 
 
 # Create your models here.
@@ -45,3 +47,5 @@ class Club(BaseModel):
             if not Club.objects.filter(code=new_code).exists():
                 return new_code
 
+    def __str__(self):
+        return self.name

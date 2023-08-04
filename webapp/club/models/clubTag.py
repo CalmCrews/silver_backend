@@ -60,3 +60,34 @@ class ClubTag(BaseModel):
         verbose_name='기타',
         default=False,
     )
+
+    @property
+    def club_tag(self):
+        club_tags = []
+        if self.gathering:
+            club_tags.append('gathering')
+        if self.daily:
+            club_tags.append('daily')
+        if self.economic:
+            club_tags.append('economic')
+        if self.biology:
+            club_tags.append('biology')
+        if self.culture:
+            club_tags.append('culture')
+        if self.study:
+            club_tags.append('study')
+        if self.life:
+            club_tags.append('life')
+        if self.sports:
+            club_tags.append('sports')
+        if self.religion:
+            club_tags.append('religion')
+        if self.health:
+            club_tags.append('health')
+        if self.etc:
+            club_tags.append('etc')
+        return club_tags
+
+
+
+
