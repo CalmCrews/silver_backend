@@ -45,6 +45,7 @@ PACKAGE_APPS = [
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     'django_crontab',
+    'django_filters',
 ]
 
 PROJECT_APPS = [
@@ -145,6 +146,9 @@ REST_FRAMEWORK = {
         'config.authentications.CsrfExemptSessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
     ),
 }
 
