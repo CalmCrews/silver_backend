@@ -6,8 +6,6 @@ from user.serializers import UserSerializer
 
 
 class UserClubJoinSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
-    club = ClubSerializer(read_only=True)
     club_code = serializers.CharField(write_only=True, required=False)
 
     class Meta:
@@ -26,11 +24,3 @@ class UserClubJoinSerializer(serializers.ModelSerializer):
             'is_owner',
             'nickname',
         )
-
-
-    def to_internal_value(self, data):
-        nickname = data.get('nickname', None)
-        if nickname == "null":
-            data['nickname'] = None
-        return super().to_internal_value(data)
-
