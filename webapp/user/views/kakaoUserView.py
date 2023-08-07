@@ -38,6 +38,7 @@ def kakaoCallback(request):
     user_info_response = requests.get('https://kapi.kakao.com/v2/user/me', headers={"Authorization": f'Bearer {access_token}'})
     profile_json = user_info_response.json()
     kakaoId = profile_json.get("id")
+    username = profile_json.get("properties").get("nickname")
 
     if kakaoId is not None:
         if User.objects.filter(kakaoId=kakaoId).exists():
@@ -47,6 +48,7 @@ def kakaoCallback(request):
                 "user": {
                     "id": user_info.id,
                     "kakaoId": user_info.kakaoId,
+                    "username": user_info.username,
                 },
                 "token": {
                     "access": f"{str(refresh.access_token)}",
@@ -56,13 +58,14 @@ def kakaoCallback(request):
             return Response(res, status=200)
 
         else:
-            User(kakaoId=kakaoId).save()
+            User(kakaoId=kakaoId, username=username).save()
             user_info = User.objects.get(kakaoId=kakaoId)
             refresh = RefreshToken.for_user(user_info)
             res = {
                 "user": {
                     "id": user_info.id,
                     "kakaoId": user_info.kakaoId,
+                    "username": user_info.username,
                 },
                 "token": {
                     "access": f"{str(refresh.access_token)}",
