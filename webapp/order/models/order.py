@@ -23,8 +23,8 @@ class Order(BaseModel):
     )
 
     product = models.ForeignKey(
-        'product.Product',
-        verbose_name='상품',
+        'club.ClubProduct',
+        verbose_name='주문 상품',
         on_delete=models.SET_NULL,
         null=True,
     )
