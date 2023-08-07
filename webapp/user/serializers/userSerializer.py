@@ -11,6 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
             'username',
             'profile_image',
             'password',
+            'balance',
         ]
 
         extra_kwargs = {
