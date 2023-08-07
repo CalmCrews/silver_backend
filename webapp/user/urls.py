@@ -1,7 +1,6 @@
 from django.urls import path
 
-from user.views import RegisterAPIView, LoginAPIView, LogoutAPIView, kakaoCallback, kakaoGetLogin, naverGetLogin, naverCallback, \
-    DuplicateUserNameAPIView
+from user.views import *
 from order.views import MyOrderListForAllProductsAPIView
 
 urlpatterns = [
@@ -14,4 +13,5 @@ urlpatterns = [
     path('naver/callback/', naverCallback, name="naverCallback"),
     path('myorders/', MyOrderListForAllProductsAPIView.as_view()),
     path('duplicateUserId/', DuplicateUserNameAPIView.as_view()),
+    path('<int:user_id>/charge/', ChargeBalanceAPIView.as_view()),
 ]
