@@ -30,7 +30,15 @@ class UserClub(BaseModel):
         null=True,
     )
 
+    profile_image = models.ImageField(
+        verbose_name='프로필 이미지',
+        upload_to='profile_image',
+        null=True,
+        blank=True,
+    )
+
     is_owner = models.BooleanField(
         verbose_name='모임장 여부',
         default=False,
     )
+

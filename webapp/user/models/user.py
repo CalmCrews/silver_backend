@@ -55,13 +55,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         blank=True,
     )
 
-    profile_image = models.ImageField(
-        verbose_name='프로필 이미지',
-        upload_to='profile_image',
-        null=True,
-        blank=True,
-    )
-
     created_at = models.DateTimeField(
         verbose_name='생성 일시',
         auto_now_add=True,
