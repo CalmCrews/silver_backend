@@ -8,6 +8,7 @@ class UserAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         '__str__',
+        'balance',
         'created_at',
         'updated_at',
     )
