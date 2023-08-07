@@ -1,3 +1,4 @@
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -7,6 +8,8 @@ from club.models import UserClub
 class DuplicateNickNameAPIView(APIView):
 
     def post(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            return Response({'message': '로그인 후 이용해 주세요.'}, status=status.HTTP_400_BAD_REQUEST)
         club_id = self.kwargs.get('club_id')
         user_clubs = UserClub.objects.filter(club=club_id)
         if user_clubs is None:
