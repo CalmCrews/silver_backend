@@ -53,6 +53,7 @@ def naverCallback(request):
 
         if 'response' in profile_json:
             naverId = profile_json['response'].get("id")
+            username = profile_json['response'].get("nickname")
 
             if naverId is not None:
                 if User.objects.filter(naverId=naverId).exists():
@@ -62,6 +63,7 @@ def naverCallback(request):
                         "user": {
                             "id": user_info.id,
                             "naverId": user_info.naverId,
+                            "username": user_info.username,
                         },
                         "token": {
                             "access": f"{str(refresh.access_token)}",
@@ -71,13 +73,14 @@ def naverCallback(request):
                     return Response(res, status=status.HTTP_200_OK)
 
                 else:
-                    User(naverId=naverId).save()
+                    User(naverId=naverId, username=username).save()
                     user_info = User.objects.get(naverId=naverId)
                     refresh = RefreshToken.for_user(user_info)
                     res = {
                         "user": {
                             "id": user_info.id,
                             "naverId": user_info.naverId,
+                            "username": user_info.username,
                         },
                         "token": {
                             "access": f"{str(refresh.access_token)}",
