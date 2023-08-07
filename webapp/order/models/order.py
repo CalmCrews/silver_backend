@@ -57,6 +57,9 @@ class Order(BaseModel):
         blank=True,
     )
 
+    def __str__(self):
+        return f'주문번호 : {self.id} / 유저 : {self.user} / 상품 :  {self.product.product}'
+
     @property
     def total_initial_price(self):
         if self.initial_price:

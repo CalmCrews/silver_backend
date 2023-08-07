@@ -20,6 +20,7 @@ class Review(BaseModel):
         verbose_name='내용',
         null=False,
         blank=True,
+        max_length=101,
     )
 
     rating = models.DecimalField(
