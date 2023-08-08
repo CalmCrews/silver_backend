@@ -1,3 +1,4 @@
 from .clubListCreateAPIView import ClubListCreateAPIView
 from .clubRetrieveUpdateAPIView import ClubRetrieveUpdateAPIView
-from .userClubNicknameUpdateAPIView import UserClubNicknameUpdateAPIView
+# from .userClubNicknameUpdateAPIView import UserClubNicknameUpdateAPIView
+from .userClubJoinCreateAPIVIew import UserClubJoinCreateAPIView

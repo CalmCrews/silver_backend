@@ -14,7 +14,6 @@ class UserClubJoinSerializer(serializers.ModelSerializer):
             'club',
             'user',
             'is_owner',
-            'nickname',
             'club_code',
         )
 
@@ -22,5 +21,4 @@ class UserClubJoinSerializer(serializers.ModelSerializer):
             'club',
             'user',
             'is_owner',
-            'nickname',
         )

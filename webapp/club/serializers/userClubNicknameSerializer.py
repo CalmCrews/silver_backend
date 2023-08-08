@@ -12,7 +12,6 @@ class UserClubNicknameSerializer(serializers.ModelSerializer):
             'club',
             'is_owner',
             'user_profile',
-            'nickname',
         )
 
         read_only_fields = (

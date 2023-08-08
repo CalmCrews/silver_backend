@@ -55,6 +55,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         blank=True,
     )
 
+    nickname = models.CharField(
+        max_length=30,
+        null=True,
+    )
+
     profile_image = models.ImageField(
         verbose_name='프로필 이미지',
         upload_to='profile_image',
