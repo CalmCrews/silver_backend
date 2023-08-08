@@ -17,7 +17,7 @@ class SellerRetrieveAPIView(RetrieveAPIView):
         serializer = self.get_serializer(instance)
         seller_id = self.kwargs.get('seller_id')
         sales = Product.objects.filter(seller=seller_id)
-        sales_dict = {}
+        sales_list = []
         for sale in sales:
             product_data = ProductSerializer(sale).data
             sale_data = {
@@ -25,11 +25,11 @@ class SellerRetrieveAPIView(RetrieveAPIView):
                 'name': product_data['name'],
                 'thumbnail': product_data['thumbnail'],
             }
-            sales_dict[sale.name] = sale_data
+            sales_list.append(sale_data)
         number_of_sales = sales.count()
         res = {
             'data': serializer.data,
             'number_of_sales': number_of_sales,
-            'sales_list': sales_dict,
+            'sales_list': sales_list,
         }
         return Response(res)
