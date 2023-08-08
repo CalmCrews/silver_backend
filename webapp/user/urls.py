@@ -1,7 +1,6 @@
 from django.urls import path
 
 from user.views import *
-from order.views import MyOrderListForAllProductsAPIView
 
 urlpatterns = [
     path("register/", RegisterAPIView.as_view()),
@@ -11,7 +10,6 @@ urlpatterns = [
     path('kakao/callback/', kakaoCallback, name="kakaoCallback"),
     path('naver/login/', naverGetLogin),
     path('naver/callback/', naverCallback, name="naverCallback"),
-    path('myorders/', MyOrderListForAllProductsAPIView.as_view()),
     path('duplicateUserId/', DuplicateUserNameAPIView.as_view()),
     path('<int:user_id>/charge/', ChargeBalanceAPIView.as_view()),
     path('nickname/', UserNicknameUpdateAPIView.as_view()),

@@ -11,7 +11,6 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
         'category',
         'seller',
-        'total',
         'end_at',
         'created_at',
     )

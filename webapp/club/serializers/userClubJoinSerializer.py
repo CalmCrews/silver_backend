@@ -1,8 +1,6 @@
 from rest_framework import serializers
 
 from club.models import UserClub
-from club.serializers import ClubSerializer
-from user.serializers import UserSerializer
 
 
 class UserClubJoinSerializer(serializers.ModelSerializer):

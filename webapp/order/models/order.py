@@ -29,7 +29,7 @@ class Order(BaseModel):
         null=True,
     )
 
-    quantity = models.IntegerField(
+    quantity = models.PositiveIntegerField(
         verbose_name='주문 수량',
         null=False,
         blank=True,

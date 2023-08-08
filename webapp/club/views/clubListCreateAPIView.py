@@ -13,6 +13,7 @@ class ClubListCreateAPIView(ListCreateAPIView):
         userclubs = UserClub.objects.filter(user=self.request.user).select_related('club__club_tags')
         clubs = [userclub.club for userclub in userclubs]
         return clubs
+
     def list(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return Response({'message': '로그인 후 이용해 주세요.'}, status=status.HTTP_400_BAD_REQUEST)
@@ -27,6 +28,7 @@ class ClubListCreateAPIView(ListCreateAPIView):
         if not self.request.user.is_authenticated:
             return Response({'message': '로그인 후 이용해 주세요.'}, status=status.HTTP_400_BAD_REQUEST)
         return self.create(request, *args, **kwargs)
+
     def perform_create(self, serializer):
         club_instance = serializer.save()
 

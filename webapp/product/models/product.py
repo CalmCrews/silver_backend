@@ -2,7 +2,6 @@ from django.db import models
 from django.utils import timezone
 
 from config.models import BaseModel
-from order.models import Order
 
 PRODUCT_CATEGORY_CHOICES = (
     ('FASHION', 'FASHION'),
@@ -71,11 +70,6 @@ class Product(BaseModel):
         blank=True,
     )
 
-    total = models.IntegerField(
-        verbose_name='전체 상품 수량',
-        null=False,
-    )
-
     end_at = models.DateTimeField(
         verbose_name='판매 종료 일시',
         null=False,
@@ -83,29 +77,11 @@ class Product(BaseModel):
     )
 
     @property
-    def is_sellable(self):
-        current_quantity = Order.objects.filter(product=self).aggregate(total_quantity=models.Sum('quantity'))['total_quantity']
-        if current_quantity is None:
-            current_quantity = 0
-
-        time_passed = self.end_at <= timezone.now()
-        quantity_is_larger_than_total = current_quantity >= int(self.total)
-
-        if time_passed or quantity_is_larger_than_total:
+    def time_passed(self):
+        time_passed = self.end_at > timezone.now()
+        if time_passed:
             return False
         return True
-
-    @property
-    def current_buyable_quantity(self):
-        current_quantity = Order.objects.filter(product=self).aggregate(total_quantity=models.Sum('quantity'))['total_quantity']
-        if current_quantity is None:
-            current_quantity = 0
-
-        buyable_quantity = int(self.total) - current_quantity
-        if buyable_quantity < 0 or not self.is_sellable:
-            buyable_quantity = 0
-
-        return buyable_quantity
 
     def __str__(self):
         return self.name

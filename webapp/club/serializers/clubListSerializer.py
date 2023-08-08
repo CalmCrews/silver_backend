@@ -1,4 +1,3 @@
-# club/serializers.py
 from rest_framework import serializers
 
 from club.models import Club, ClubTag
@@ -6,6 +5,7 @@ from club.models import Club, ClubTag
 
 class ClubListSerializer(serializers.ModelSerializer):
     club_tags = serializers.SerializerMethodField()
+
     class Meta:
         model = Club
         fields = (
@@ -19,11 +19,6 @@ class ClubListSerializer(serializers.ModelSerializer):
             'level',
         )
 
-
     def get_club_tags(self, obj):
         club_tags = ClubTag.objects.filter(club=obj)
         return [tag.club_tag for tag in club_tags]
-
-
-
-

@@ -9,5 +9,4 @@ class ClubProductAdmin(admin.ModelAdmin):
         'id',
         'product',
         'club',
-        'maximum',
     ]
