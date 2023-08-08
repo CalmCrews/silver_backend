@@ -6,6 +6,7 @@ from user.serializers import UserSerializer
 
 class UserClubNicknameSerializer(serializers.ModelSerializer):
     user_profile = serializers.SerializerMethodField()
+
     class Meta:
         model = UserClub
         fields = (

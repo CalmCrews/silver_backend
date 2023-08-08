@@ -1,9 +1,8 @@
 from django.shortcuts import get_object_or_404
-
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from rest_framework.permissions import IsAuthenticated
 from order.models import Order
 from order.permissions import IsOrderOwner
 from order.serializers import OrderSerializer

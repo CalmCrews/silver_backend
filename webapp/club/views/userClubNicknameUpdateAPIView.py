@@ -15,10 +15,10 @@ class UserClubNicknameUpdateAPIView(UpdateAPIView):
         if self.request.user.is_anonymous:
             raise PermissionDenied(detail='로그인 후 이용해 주세요.')
         club_id = self.kwargs.get('club_id')
-        qureyset = UserClub.objects.filter(user=self.request.user, club__id=club_id)
-        if not qureyset:
+        queryset = UserClub.objects.filter(user=self.request.user, club__id=club_id)
+        if not queryset:
             return Response({'message': '참여하고 있는 모임이 아닙니다.'})
-        return qureyset
+        return queryset
 
     def get_object(self):
         queryset = self.filter_queryset(self.get_queryset())

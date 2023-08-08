@@ -1,4 +1,3 @@
-# club/serializers.py
 from rest_framework import serializers
 
 from club.models import Club, ClubTag
@@ -6,6 +5,7 @@ from club.models import Club, ClubTag
 
 class ClubRetrieveSerializer(serializers.ModelSerializer):
     club_tag = serializers.SerializerMethodField()
+
     class Meta:
         model = Club
         fields = (
@@ -23,7 +23,3 @@ class ClubRetrieveSerializer(serializers.ModelSerializer):
     def get_club_tag(self, obj):
         club_tag = ClubTag.objects.get(club=obj)
         return club_tag.club_tag
-
-
-
-

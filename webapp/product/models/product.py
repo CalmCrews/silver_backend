@@ -2,7 +2,6 @@ from django.db import models
 from django.utils import timezone
 
 from config.models import BaseModel
-from order.models import Order
 
 PRODUCT_CATEGORY_CHOICES = (
     ('FASHION', 'FASHION'),

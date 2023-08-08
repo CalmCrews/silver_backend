@@ -17,6 +17,7 @@ class ClubRetrieveUpdateAPIView(RetrieveUpdateAPIView):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
+
     def update(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return Response({'message': '로그인 후 이용해 주세요.'}, status=status.HTTP_400_BAD_REQUEST)
@@ -33,4 +34,3 @@ class ClubRetrieveUpdateAPIView(RetrieveUpdateAPIView):
         club.save()
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
-

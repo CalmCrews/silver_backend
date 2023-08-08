@@ -1,10 +1,6 @@
 from django.urls import path
 
-from club.views.clubListCreateAPIView import ClubListCreateAPIView
-from club.views.clubRetrieveUpdateAPIView import ClubRetrieveUpdateAPIView
-from club.views.duplicateNicknameAPIView import DuplicateNickNameAPIView
-from club.views.userClubJoinCreateAPIVIew import UserClubJoinCreateAPIView
-from club.views.userClubNicknameUpdateAPIView import UserClubNicknameUpdateAPIView
+from club.views import *
 
 urlpatterns = [
     path("", ClubListCreateAPIView.as_view()),
