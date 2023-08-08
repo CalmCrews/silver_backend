@@ -2,12 +2,14 @@ from rest_framework import serializers
 
 from order.models import Order
 from product.serializers import ProductAbstractSerializer
+from user.serializers import UserSerializer
 
 
 class OrderSerializer(serializers.ModelSerializer):
     total_initial_price = serializers.SerializerMethodField()
     total_final_price = serializers.SerializerMethodField()
-    product = ProductAbstractSerializer(read_only=True)
+    user = UserSerializer(read_only=True)
+    product = serializers.SerializerMethodField()
 
     class Meta:
         model = Order
@@ -39,3 +41,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     def get_total_final_price(self, obj):
         return obj.total_final_price
+
+    def get_product(self, obj):
+        serializer = ProductAbstractSerializer(obj.product.product)
+        return serializer.data
