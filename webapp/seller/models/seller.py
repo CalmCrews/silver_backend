@@ -15,8 +15,16 @@ class Seller(BaseModel):
         max_length=30,
     )
 
-    represent = models.IntegerField(
+    represent = models.CharField(
         verbose_name='대표자명',
+        max_length=60,
+    )
+
+    business_image = models.ImageField(
+        verbose_name='판매자 이미지',
+        upload_to='business_image',
+        null=True,
+        blank=True,
     )
 
     business_number = models.CharField(
