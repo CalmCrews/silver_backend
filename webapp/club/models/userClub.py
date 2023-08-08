@@ -25,12 +25,8 @@ class UserClub(BaseModel):
         related_name='user_club',
     )
 
-    nickname = models.CharField(
-        max_length=30,
-        null=True,
-    )
-
     is_owner = models.BooleanField(
         verbose_name='모임장 여부',
         default=False,
     )
+

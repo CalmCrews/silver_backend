@@ -9,6 +9,7 @@ class UserBalanceSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'username',
+            'nickname',
             'profile_image',
             'balance',
         ]
@@ -16,5 +17,6 @@ class UserBalanceSerializer(serializers.ModelSerializer):
         read_only_fields = [
             'id',
             'username',
+            'nickname',
             'profile_image',
         ]

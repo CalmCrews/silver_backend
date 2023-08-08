@@ -3,6 +3,5 @@ from .clubListSerializer import ClubListSerializer
 from .clubRetrieveSerializer import ClubRetrieveSerializer
 from .clubTagSerializer import ClubTagSerializer
 from .userClubSerializer import UserClubSerializer
-from .userClubNicknameSerializer import UserClubNicknameSerializer
 from .userClubJoinSerializer import UserClubJoinSerializer
 from .clubProductSerializer import ClubProductSerializer
