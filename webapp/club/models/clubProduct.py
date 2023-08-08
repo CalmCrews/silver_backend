@@ -22,8 +22,6 @@ class ClubProduct(BaseModel):
         on_delete=models.CASCADE,
         null=False,
     )
-    maximum = models.PositiveIntegerField(
-        verbose_name='최대 구매 수량',
-        null=False,
-        blank=True,
-    )
+
+    def __str__(self):
+        return f'{self.product.name}'

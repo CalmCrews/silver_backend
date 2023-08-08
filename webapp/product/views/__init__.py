@@ -4,3 +4,4 @@ from .productQuestionCreateAPIView import ProductQuestionCreateAPIView
 from .productQuestionRetrieveUpdateDestroyAPIView import ProductQuestionRetrieveUpdateDestroyAPIView
 from .productQnAListAPIView import ProductQnAListAPIView
 from .productQnARetriveAPIView import ProductQnARetrieveAPIView
+from .clubProductCreateAPIView import ClubProductCreateAPIView
