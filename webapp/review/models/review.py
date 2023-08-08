@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 from config.models import BaseModel
@@ -25,8 +26,12 @@ class Review(BaseModel):
 
     rating = models.DecimalField(
         verbose_name='별점',
-        max_digits=1,
+        max_digits=2,
         decimal_places=1,
         null=False,
         blank=True,
+        validators=[
+            MinValueValidator(0.0),
+            MaxValueValidator(5.0),
+        ]
     )

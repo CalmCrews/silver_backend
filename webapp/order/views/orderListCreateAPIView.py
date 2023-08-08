@@ -1,29 +1,34 @@
 from django.shortcuts import get_object_or_404
+from rest_framework.exceptions import NotFound
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
 
+from club.models import ClubProduct
 from order.models import Order
 from order.serializers import OrderSerializer
 from product.models import Product
 
 
 class OrderListCreateAPIView(ListCreateAPIView):
+    queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
     def get_queryset(self):
-        queryset = Order.objects.filter(user=self.request.user, product=self.get_product())
+        queryset = super().get_queryset()
+        queryset = queryset.filter(user=self.request.user)
         return queryset
 
     def perform_create(self, serializer):
-        product = self.get_product()
+        club_product = self.get_club_product()
         serializer.save(
             user=self.request.user,
-            product=product,
-            initial_price=product.price,
-            status='PREPAYMENT'
+            product=club_product,
+            initial_price=club_product.product.price,
+            status='PREPAYMENT',
         )
+
         if serializer.instance.final_price is None:
-            serializer.instance.final_price = product.price
+            serializer.instance.final_price = club_product.product.price
             serializer.save()
         user = self.request.user
         if user.balance < serializer.instance.total_initial_price:
@@ -41,14 +46,16 @@ class OrderListCreateAPIView(ListCreateAPIView):
         return Response(serializer.data, status=201, headers=headers)
 
     def post(self, request, *args, **kwargs):
-        product = self.get_product()
-        if product.is_sellable:
-            if product.current_buyable_quantity < int(request.data.get('quantity')):
-                return Response({'message': '해당 상품의 재고가 부족합니다'}, status=400)
-            return super().post(request, *args, **kwargs)
-        return Response({'message': '해당 상품을 구매할 수 없습니다'}, status=400)
+        club_product = self.get_club_product()
+        product = club_product.product
+        if product.time_passed:
+            return Response({'message': '해당 상품의 판매기간이 아닙니다.'}, status=400)
+        return self.create(request, *args, **kwargs)
 
-    def get_product(self):
+    def get_club_product(self):
         product_id = self.kwargs.get('product_id')
         product = get_object_or_404(Product, id=product_id)
-        return product
+        club_product = ClubProduct.objects.filter(product=product)
+        if not club_product.exists():
+            return NotFound("해당 모임에 등록된 상품이 아닙니다.")
+        return club_product.first()

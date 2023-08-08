@@ -6,7 +6,6 @@ from django.db import models
 from config.models import BaseModel
 
 
-# Create your models here.
 class Club(BaseModel):
     class Meta:
         db_table = 'clubs'

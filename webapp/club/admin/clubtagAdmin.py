@@ -3,7 +3,6 @@ from django.contrib import admin
 from club.models import ClubTag
 
 
-# Register your models here.
 @admin.register(ClubTag)
 class ClubTagAdmin(admin.ModelAdmin):
     list_display = [
