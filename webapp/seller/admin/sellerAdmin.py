@@ -4,7 +4,7 @@ from seller.models import Seller
 
 
 @admin.register(Seller)
-class OrderAdmin(admin.ModelAdmin):
+class SellerAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'represent',
