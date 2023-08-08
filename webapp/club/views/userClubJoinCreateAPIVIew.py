@@ -45,7 +45,6 @@ class UserClubJoinCreateAPIView(CreateAPIView):
             'club': club.id,
             'user': self.request.user.id,
             'is_owner': False,
-            'nickname': None,
         }
 
         already_club = UserClub.objects.filter(user=self.request.user.id, club=club.id)

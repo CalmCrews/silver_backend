@@ -9,6 +9,5 @@ class UserClubAdmin(admin.ModelAdmin):
     list_display = [
         'user',
         'club',
-        'nickname',
         'is_owner',
     ]
