@@ -32,14 +32,14 @@ class ClubListCreateAPIView(ListCreateAPIView):
         return self.create(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
-        tag = request.data.get('tag')
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer, tag)
+        self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
-    def perform_create(self, serializer, tag):
+    def perform_create(self, serializer):
+        tag = self.request.data.get('tag')
         tag_list = literal_eval(tag)
         tag_value = ' '.join(tag_list)
         serializer.validated_data['tag'] = tag_value

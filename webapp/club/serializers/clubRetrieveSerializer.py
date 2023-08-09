@@ -11,12 +11,14 @@ class ClubRetrieveSerializer(serializers.ModelSerializer):
             'name',
             'intro',
             'level',
-            'tag'
+            'tag',
+            'code',
         )
 
         read_only_fields = (
             'level',
             'tag',
+            'code',
         )
 
     def to_representation(self, instance):
