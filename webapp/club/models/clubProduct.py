@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Sum
 
+from club.models import UserClub
 from config.models import BaseModel
 from order.models import Order
 
@@ -30,6 +31,13 @@ class ClubProduct(BaseModel):
         return Order.objects.filter(product=self).values('user').distinct().count()
 
     @property
+    def achievement_rate(self):
+        participant_count = self.participant_count
+        club_member_count = UserClub.objects.filter(club=self.club).count()
+        achievement_rate = int(participant_count / club_member_count * 100)
+        return achievement_rate
+
+    @property
     def quantity_sum(self):
         product_quantity_sum = Order.objects.filter(product=self).aggregate(Sum('quantity'))
         return product_quantity_sum['quantity__sum'] if product_quantity_sum['quantity__sum'] else 0
@@ -50,6 +58,7 @@ class ClubProduct(BaseModel):
 
         discount_rate_by_order_quantity_count = self.discount_rate_by_order_count(order_count)
         total_discount_rate = (discount_rate_by_club_level[club_level] + discount_rate_by_order_quantity_count)
+        total_discount_rate = round(total_discount_rate, 2)
 
         return total_discount_rate
 

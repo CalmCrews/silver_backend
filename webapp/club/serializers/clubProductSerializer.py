@@ -19,6 +19,7 @@ class ClubProductSerializer(serializers.ModelSerializer):
             'quantity_sum',
             'current_price',
             'discount_rate',
+            'achievement_rate',
         )
         read_only_fields = (
             'id',
@@ -27,4 +28,5 @@ class ClubProductSerializer(serializers.ModelSerializer):
             'quantity_sum',
             'current_price',
             'discount_rate',
+            'achievement_rate',
         )
