@@ -14,8 +14,7 @@ class Club(BaseModel):
 
     name = models.CharField(
         verbose_name='모임명',
-        unique=True,
-        max_length=30,
+        max_length=40,
     )
     code = models.IntegerField(
         verbose_name='초대코드',
@@ -33,6 +32,10 @@ class Club(BaseModel):
             MaxValueValidator(5)
         ],
         default=0,
+    )
+    tag = models.CharField(
+        verbose_name='모임 태그',
+        blank=False,
     )
 
     def save(self, *args, **kwargs):

@@ -1,16 +1,18 @@
+from ast import literal_eval
+
 from rest_framework import status
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
 
 from club.models import UserClub
-from club.serializers import ClubListSerializer, ClubTagSerializer, UserClubSerializer
+from club.serializers import ClubListSerializer, UserClubSerializer
 
 
 class ClubListCreateAPIView(ListCreateAPIView):
     serializer_class = ClubListSerializer
 
     def get_queryset(self):
-        userclubs = UserClub.objects.filter(user=self.request.user).select_related('club__club_tags')
+        userclubs = UserClub.objects.filter(user=self.request.user)
         clubs = [userclub.club for userclub in userclubs]
         return clubs
 
@@ -30,6 +32,10 @@ class ClubListCreateAPIView(ListCreateAPIView):
         return self.create(request, *args, **kwargs)
 
     def perform_create(self, serializer):
+        tag = self.request.data.get('tag')
+        tag_list = literal_eval(tag)
+        tag_value = ' '.join(tag_list)
+        serializer.validated_data['tag'] = tag_value
         club_instance = serializer.save()
 
         user_club_data = {
@@ -41,12 +47,3 @@ class ClubListCreateAPIView(ListCreateAPIView):
         user_club_serializer = UserClubSerializer(data=user_club_data)
         user_club_serializer.is_valid(raise_exception=True)
         user_club_serializer.save()
-
-        club_tag_data = self.request.data.get('club_tag')
-        if club_tag_data:
-            club_tag_data['club'] = club_instance.id
-            club_tag_serializer = ClubTagSerializer(data=club_tag_data)
-            club_tag_serializer.is_valid(raise_exception=True)
-            club_tag_serializer.save()
-
-        return Response(serializer.data, status=status.HTTP_201_CREATED)

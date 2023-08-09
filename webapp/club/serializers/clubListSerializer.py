@@ -1,24 +1,31 @@
 from rest_framework import serializers
 
-from club.models import Club, ClubTag
+from club.models import Club
 
 
 class ClubListSerializer(serializers.ModelSerializer):
-    club_tags = serializers.SerializerMethodField()
 
     class Meta:
         model = Club
         fields = (
+            'id',
             'name',
             'intro',
             'level',
-            'club_tags',
+            'tag',
+            'code',
         )
 
         read_only_fields = (
             'level',
+            'code',
         )
 
-    def get_club_tags(self, obj):
-        club_tags = ClubTag.objects.filter(club=obj)
-        return [tag.club_tag for tag in club_tags]
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        tag_value = representation.get('tag', None)
+
+        if tag_value:
+            representation['tag'] = tag_value.split()
+
+        return representation
