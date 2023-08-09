@@ -1,3 +1,5 @@
+from ast import literal_eval
+
 from rest_framework import status
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
@@ -29,7 +31,18 @@ class ClubListCreateAPIView(ListCreateAPIView):
             return Response({'message': '로그인 후 이용해 주세요.'}, status=status.HTTP_400_BAD_REQUEST)
         return self.create(request, *args, **kwargs)
 
-    def perform_create(self, serializer):
+    def create(self, request, *args, **kwargs):
+        tag = request.data.get('tag')
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer, tag)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    def perform_create(self, serializer, tag):
+        tag_list = literal_eval(tag)
+        tag_value = ' '.join(tag_list)
+        serializer.validated_data['tag'] = tag_value
         club_instance = serializer.save()
 
         user_club_data = {
@@ -41,5 +54,3 @@ class ClubListCreateAPIView(ListCreateAPIView):
         user_club_serializer = UserClubSerializer(data=user_club_data)
         user_club_serializer.is_valid(raise_exception=True)
         user_club_serializer.save()
-
-        return Response(serializer.data, status=status.HTTP_201_CREATED)

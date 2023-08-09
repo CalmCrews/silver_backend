@@ -35,7 +35,7 @@ class Club(BaseModel):
     )
     tag = models.CharField(
         verbose_name='모임 태그',
-        blank=True,
+        blank=False,
     )
 
     def save(self, *args, **kwargs):
