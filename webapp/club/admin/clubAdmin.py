@@ -10,4 +10,5 @@ class ClubAdmin(admin.ModelAdmin):
         'code',
         'intro',
         'level',
+        'tag',
     ]
