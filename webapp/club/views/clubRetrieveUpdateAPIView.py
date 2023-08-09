@@ -1,5 +1,3 @@
-from ast import literal_eval
-
 from rest_framework import status
 from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.response import Response
