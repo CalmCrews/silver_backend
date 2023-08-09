@@ -7,3 +7,4 @@ class UserClubSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserClub
         fields = '__all__'
+
