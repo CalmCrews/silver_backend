@@ -13,6 +13,7 @@ def order_close_logic():
     if closed_orders:
         for order in closed_orders:
             order.status = 'FINALPAYMENT'
+            order.final_price = order.product.current_price
             print(str(order.product.product.name) + " 상품의 " + str(order.id) + " 번 주문이 종료되었습니다.")
             print(str(order.user) + " 님의 초기 결제 금액 :" + str(order.total_initial_price) + "원")
             print(str(order.user) + " 님의 최종 결제 금액 :" + str(order.total_final_price) + "원")

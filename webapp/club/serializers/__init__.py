@@ -4,3 +4,4 @@ from .clubRetrieveSerializer import ClubRetrieveSerializer
 from .userClubSerializer import UserClubSerializer
 from .userClubJoinSerializer import UserClubJoinSerializer
 from .clubProductSerializer import ClubProductSerializer
+from .clubProductAbstractSerializer import ClubProductAbstractSerializer
