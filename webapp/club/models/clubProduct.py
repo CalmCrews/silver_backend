@@ -39,9 +39,10 @@ class ClubProduct(BaseModel):
         discount_rate_by_club_level = {
             0: 0,
             1: 0,
-            2: 0.02,
-            3: 0.03,
-            4: 0.05,
+            2: 0.01,
+            3: 0.02,
+            4: 0.03,
+            5: 0.05,
         }
         club_level = int(self.club.level)
         product_quantity_sum = Order.objects.filter(product=self).aggregate(Sum('quantity'))
