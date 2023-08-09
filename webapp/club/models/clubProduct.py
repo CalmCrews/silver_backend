@@ -38,6 +38,7 @@ class ClubProduct(BaseModel):
     def discount_rate(self):
         discount_rate_by_club_level = {
             0: 0,
+            1: 0,
             2: 0.02,
             3: 0.03,
             4: 0.05,
