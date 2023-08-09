@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 from config.models import BaseModel
+from seller.models import Seller
 
 PRODUCT_CATEGORY_CHOICES = (
     ('FASHION', 'FASHION'),
@@ -63,9 +64,10 @@ class Product(BaseModel):
         blank=True,
     )
 
-    seller = models.CharField(
+    seller = models.ForeignKey(
+        Seller,
+        on_delete=models.CASCADE,
         verbose_name='판매자',
-        max_length=255,
         null=False,
         blank=True,
     )
