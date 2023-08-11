@@ -43,17 +43,6 @@ class ClubProduct(BaseModel):
         return achievement_rate
 
     @property
-    def final_participant_count(self):
-        return Order.objects.filter(product=self, status='FINALPAYMENT').values('user').distinct().count()
-
-    @property
-    def final_achievement_rate(self):
-        participant_count = self.final_participant_count
-        club_member_count = UserClub.objects.filter(club=self.club).count()
-        achievement_rate = int(participant_count / club_member_count * 100)
-        return achievement_rate
-
-    @property
     def quantity_sum(self):
         product_quantity_sum = Order.objects.filter(product=self).aggregate(Sum('quantity'))
         return product_quantity_sum['quantity__sum'] if product_quantity_sum['quantity__sum'] else 0
