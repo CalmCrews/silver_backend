@@ -167,4 +167,5 @@ SIMPLE_JWT = {
 
 CRONJOBS = [
     ('*/1 * * * *', 'order.scheduler.order_close_logic', '>> ../var/log/cron.log'),
+    ('*/1 * * * *', 'club.scheduler.levelup_logic', '>> ../var/log/levelup.log'),
 ]

@@ -38,6 +38,11 @@ class Club(BaseModel):
         blank=False,
     )
 
+    achievement_count = models.IntegerField(
+        verbose_name='총 달성률 횟수',
+        default=0
+    )
+
     def save(self, *args, **kwargs):
         if not self.code:
             self.code = self.generate_code()

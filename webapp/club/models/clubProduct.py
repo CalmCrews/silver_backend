@@ -26,6 +26,11 @@ class ClubProduct(BaseModel):
         null=False,
     )
 
+    registration = models.BooleanField(
+        verbose_name='레벨업 반영 여부',
+        default=False,
+    )
+
     @property
     def participant_count(self):
         return Order.objects.filter(product=self).values('user').distinct().count()

@@ -3,12 +3,13 @@ from rest_framework.generics import UpdateAPIView, get_object_or_404
 from rest_framework.response import Response
 
 from user.models import User
-from user.serializers.userNicknameSerializer import UserNicknameSerializer
+from user.serializers import UserNicknameSerializer
 
 
 class UserNicknameUpdateAPIView(UpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserNicknameSerializer
+
     def get_queryset(self):
         queryset = self.queryset.filter(id=self.request.user.id)
         if isinstance(queryset, QuerySet):
