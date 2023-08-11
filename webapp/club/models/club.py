@@ -38,7 +38,7 @@ class Club(BaseModel):
         blank=False,
     )
 
-    achievement = models.IntegerField(
+    achievement_count = models.IntegerField(
         verbose_name='총 달성률 횟수',
         default=0
     )
