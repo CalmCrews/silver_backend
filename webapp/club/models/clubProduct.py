@@ -26,6 +26,11 @@ class ClubProduct(BaseModel):
         null=False,
     )
 
+    registration = models.BooleanField(
+        verbose_name='레벨업 반영 여부',
+        default=False,
+    )
+
     @property
     def participant_count(self):
         return Order.objects.filter(product=self).values('user').distinct().count()
@@ -33,6 +38,17 @@ class ClubProduct(BaseModel):
     @property
     def achievement_rate(self):
         participant_count = self.participant_count
+        club_member_count = UserClub.objects.filter(club=self.club).count()
+        achievement_rate = int(participant_count / club_member_count * 100)
+        return achievement_rate
+
+    @property
+    def final_participant_count(self):
+        return Order.objects.filter(product=self, status='FINALPAYMENT').values('user').distinct().count()
+
+    @property
+    def final_achievement_rate(self):
+        participant_count = self.final_participant_count
         club_member_count = UserClub.objects.filter(club=self.club).count()
         achievement_rate = int(participant_count / club_member_count * 100)
         return achievement_rate
