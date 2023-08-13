@@ -78,6 +78,11 @@ class Product(BaseModel):
         blank=True,
     )
 
+    tag = models.CharField(
+        verbose_name='상품 태그',
+        null=False,
+        blank=True,
+    )
     @property
     def time_passed(self):
         time_passed = self.end_at > timezone.now()
