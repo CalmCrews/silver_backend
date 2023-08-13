@@ -1,9 +1,11 @@
 from rest_framework import serializers
 
-from club.models import Club
+from club.models import Club, UserClub
 
 
 class ClubRetrieveSerializer(serializers.ModelSerializer):
+    number_of_members = serializers.SerializerMethodField()
+
     class Meta:
         model = Club
         fields = (
@@ -13,12 +15,14 @@ class ClubRetrieveSerializer(serializers.ModelSerializer):
             'level',
             'tag',
             'code',
+            'number_of_members',
         )
 
         read_only_fields = (
             'level',
             'tag',
             'code',
+            'number_of_members',
         )
 
     def to_representation(self, instance):
@@ -29,3 +33,7 @@ class ClubRetrieveSerializer(serializers.ModelSerializer):
             representation['tag'] = tag_value.split()
 
         return representation
+
+    def get_number_of_members(self, obj):
+        member_count = UserClub.objects.filter(club=obj).count()
+        return member_count
