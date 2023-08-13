@@ -1,6 +1,8 @@
 import random
+from time import timezone
 
 from django.db.models import Q
+from django.utils import timezone
 from rest_framework.generics import ListAPIView, get_object_or_404
 from rest_framework.response import Response
 
@@ -15,6 +17,8 @@ class ProductRecommandListAPIView(ListAPIView):
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
+        current_datetime = timezone.now()
+        queryset = queryset.filter(Q(end_at__gte=current_datetime))
         userclubs = list(UserClub.objects.filter(user=self.request.user))
         clubs = []
         first_club = userclubs[0].club
