@@ -1,3 +1,3 @@
 from .questionAdmin import QuestionAdmin
 from .answerAdmin import AnswerAdmin
-from .ServiceQnAAdmin import ServiceQnA
+from .serviceQnAAdmin import ServiceQnAAdmin

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from qna.models.serviceQuestion import ServiceQuestion
+from service.models import ServiceQuestion
 
 
 @admin.register(ServiceQuestion)

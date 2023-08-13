@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from qna.models import ServiceAnswer
+from service.models import ServiceAnswer
 
 
 class ServiceAnswerSerializer(serializers.ModelSerializer):

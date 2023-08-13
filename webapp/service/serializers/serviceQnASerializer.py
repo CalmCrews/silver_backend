@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from qna.models import ServiceQnA
+from service.models import ServiceQnA
 
 
 class ServiceQnASerializer(serializers.ModelSerializer):
@@ -9,6 +9,7 @@ class ServiceQnASerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ServiceQnA
+
         fields = [
             'id',
             'question',
@@ -20,13 +21,13 @@ class ServiceQnASerializer(serializers.ModelSerializer):
         ]
 
     def get_question(self, product_qna_id):
-        from qna.serializers import ServiceQuestionSerializer
+        from service.serializers import ServiceQuestionSerializer
 
         question_serializer = ServiceQuestionSerializer(product_qna_id.question)
         return question_serializer.data if product_qna_id.question else None
 
     def get_answer(self, product_qna_id):
-        from qna.serializers import ServiceAnswerSerializer
+        from service.serializers import ServiceAnswerSerializer
 
         answer_serializer = ServiceAnswerSerializer(product_qna_id.answer)
         return answer_serializer.data if product_qna_id.answer else None

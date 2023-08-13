@@ -19,7 +19,7 @@ class ServiceQnA(BaseModel):
     )
 
     question = models.ForeignKey(
-        'product.ProductQuestion',
+        'service.ServiceQuestion',
         verbose_name='질문',
         on_delete=models.CASCADE,
         null=False,
@@ -27,7 +27,7 @@ class ServiceQnA(BaseModel):
     )
 
     answer = models.ForeignKey(
-        'product.ProductAnswer',
+        'service.ServiceAnswer',
         verbose_name='답변',
         on_delete=models.CASCADE,
         null=True,

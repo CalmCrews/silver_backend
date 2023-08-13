@@ -5,7 +5,7 @@ from config.models import BaseModel
 
 class ServiceAnswer(BaseModel):
     class Meta:
-        db_table = 'ServiceAnswer'
+        db_table = 'serviceAnswer'
         verbose_name = 'ServiceAnswer'
         verbose_name_plural = 'ServiceAnswers'
 
