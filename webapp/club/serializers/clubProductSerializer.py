@@ -20,6 +20,7 @@ class ClubProductSerializer(serializers.ModelSerializer):
             'current_price',
             'discount_rate',
             'achievement_rate',
+            'participants',
         )
         read_only_fields = (
             'id',
@@ -29,4 +30,5 @@ class ClubProductSerializer(serializers.ModelSerializer):
             'current_price',
             'discount_rate',
             'achievement_rate',
+            'participants',
         )

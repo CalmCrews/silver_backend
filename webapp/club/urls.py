@@ -8,4 +8,6 @@ urlpatterns = [
     path("<int:club_id>/clubProducts", ClubProductListAPIView.as_view()),
     path("<int:club_id>/clubProducts/<int:club_product_id>", ClubProductRetrieveAPIView.as_view()),
     path("join/", UserClubJoinCreateAPIView.as_view()),
+    path("userClubProducts/", UserClubProductListAPIView.as_view()),
+    path("allClubProducts/", AllClubProductListAPIView.as_view()),
 ]
