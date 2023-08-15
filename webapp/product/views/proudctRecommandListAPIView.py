@@ -20,6 +20,13 @@ class ProductRecommandListAPIView(ListAPIView):
         current_datetime = timezone.now()
         queryset = queryset.filter(Q(end_at__gte=current_datetime))
         userclubs = list(UserClub.objects.filter(user=self.request.user))
+
+        # 참여하고 있는 클럽이 없을때
+        if not userclubs:
+            random_products = random.sample(list(queryset), min(3, len(queryset)))
+            serializer = self.get_serializer(random_products, many=True)
+            return Response(serializer.data)
+
         clubs = []
         first_club = userclubs[0].club
         for userclub in userclubs:
@@ -33,14 +40,14 @@ class ProductRecommandListAPIView(ListAPIView):
         tag_conditions = Q()
         for tag in club_tags:
             tag_conditions |= Q(tag__contains=tag)
-        queryset = queryset.filter(tag_conditions)
+        tag_queryset = queryset.filter(tag_conditions)
         exclude_club_products = Q()
         for club in clubs:
             exclude_club_products |= Q(clubproduct__club=club['id'])
-        queryset = queryset.exclude(exclude_club_products)
+        recommand_queryset = tag_queryset.exclude(exclude_club_products)
 
-        if queryset:
-            random_products = random.sample(list(queryset), min(3, len(queryset)))
+        if recommand_queryset:
+            random_products = random.sample(list(recommand_queryset), min(3, len(recommand_queryset)))
             serializer = self.get_serializer(random_products, many=True)
             res = {
                 'product': serializer.data,
@@ -48,4 +55,10 @@ class ProductRecommandListAPIView(ListAPIView):
             }
             return Response(res)
         else:
-            return Response({'product': [], 'clubs': clubs})
+            random_products = random.sample(list(queryset), min(3, len(queryset)))
+            serializer = self.get_serializer(random_products, many=True)
+            res = {
+                'product': serializer.data,
+                'clubs': clubs
+            }
+            return Response(res)
