@@ -28,10 +28,10 @@ class UserClubJoinCreateAPIView(CreateAPIView):
             headers = self.get_success_headers(serializer)
             return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST, headers=headers)
         res = {
-                'user': user,
-                'club': club,
-                'data': serializer.data,
-            }
+            'user': user,
+            'club': club,
+            'data': serializer.data,
+        }
         headers = self.get_success_headers(serializer)
         return Response(res, status=status.HTTP_201_CREATED, headers=headers)
 
