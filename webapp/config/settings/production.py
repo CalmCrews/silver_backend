@@ -4,7 +4,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 # TODO: 프론트엔드 URL 배포 후 수정
-FRONTEND_URL = "http://www.moyeo.store/"
+FRONTEND_URL = "http://www.moyeo.store"
 BACKEND_URL = "http://101.101.209.172"
 
 DATABASES = (
