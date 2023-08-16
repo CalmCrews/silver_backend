@@ -18,21 +18,11 @@ class ClubProductSerializer(serializers.ModelSerializer):
             'product',
             'seller',
             'club',
-            'participant_count',
-            'quantity_sum',
-            'current_price',
-            'discount_rate',
-            'achievement_rate',
         )
         read_only_fields = (
             'id',
             'product',
             'seller',
-            'participant_count',
-            'quantity_sum',
-            'current_price',
-            'discount_rate',
-            'achievement_rate',
         )
 
     def get_seller(self, obj):
