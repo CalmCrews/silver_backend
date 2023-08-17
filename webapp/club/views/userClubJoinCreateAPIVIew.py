@@ -54,4 +54,8 @@ class UserClubJoinCreateAPIView(CreateAPIView):
             user_club_serializer.save()
             return user_club_serializer
         else:
+<<<<<<< HEAD
             return Response({'message': '이미 참여중인 모임입니다.'}, status=status.HTTP_200_OK)
+=======
+            return Response({'message': '이미 참여중인 모임입니다.', 'club': club.id}, status=status.HTTP_400_BAD_REQUEST)
+>>>>>>> de15fe294cd1c03b014e4a719df30569ab6c3df3
