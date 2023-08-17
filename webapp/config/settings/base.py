@@ -55,6 +55,7 @@ PROJECT_APPS = [
     'order',
     'review',
     'seller',
+    'notification',
     'service',
 ]
 

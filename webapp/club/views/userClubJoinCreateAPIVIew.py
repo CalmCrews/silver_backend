@@ -26,7 +26,7 @@ class UserClubJoinCreateAPIView(CreateAPIView):
         club = ClubSerializer(club).data
         if serializer.data.get('message'):
             headers = self.get_success_headers(serializer)
-            return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST, headers=headers)
+            return Response(serializer.data, headers=headers)
         res = {
             'user': user,
             'club': club,
@@ -54,4 +54,4 @@ class UserClubJoinCreateAPIView(CreateAPIView):
             user_club_serializer.save()
             return user_club_serializer
         else:
-            return Response({'message': '이미 참여중인 모임입니다.'})
+            return Response({'message': '이미 참여중인 모임입니다.'}, status=status.HTTP_200_OK)
