@@ -1,16 +1,19 @@
-from rest_framework.generics import ListAPIView, get_object_or_404
+from requests import Response
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 
-from club.models import ClubProduct, Club
+from club.models import ClubProduct, UserClub
 from club.serializers import ClubProductAbstractSerializer
 
 
-class ClubProductListAPIView(ListAPIView):
+class AllClubProductListAPIView(ListAPIView):
     queryset = ClubProduct.objects.all()
     serializer_class = ClubProductAbstractSerializer
 
     def get_queryset(self):
-        queryset = self.queryset.filter(club=self.get_club())
+        user_clubs = UserClub.objects.filter(user=self.request.user)
+        club_ids = [user_club.club.pk for user_club in user_clubs]
+        queryset = self.queryset.filter(club__id__in=club_ids).order_by('product__end_at')
         return queryset
 
     def list(self, request, *args, **kwargs):
@@ -36,8 +39,3 @@ class ClubProductListAPIView(ListAPIView):
             serialized_data['product'].update(extra_data)
             updated_data.append(serialized_data)
         return Response(updated_data)
-
-    def get_club(self):
-        club_id = self.kwargs.get('club_id')
-        club = get_object_or_404(Club, id=club_id)
-        return club
