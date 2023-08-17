@@ -1,16 +1,21 @@
-from rest_framework.generics import ListAPIView, get_object_or_404
+from functools import reduce
+from operator import or_
+
+from django.db.models import Q
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 
-from club.models import ClubProduct, Club
+from club.models import ClubProduct
 from club.serializers import ClubProductAbstractSerializer
+from order.models import Order
 
 
-class ClubProductListAPIView(ListAPIView):
+class UserClubProductListAPIView(ListAPIView):
     queryset = ClubProduct.objects.all()
     serializer_class = ClubProductAbstractSerializer
 
     def get_queryset(self):
-        queryset = self.queryset.filter(club=self.get_club())
+        queryset = self.queryset.filter(self.get_product()).order_by('product__end_at')[:3]
         return queryset
 
     def list(self, request, *args, **kwargs):
@@ -37,7 +42,12 @@ class ClubProductListAPIView(ListAPIView):
             updated_data.append(serialized_data)
         return Response(updated_data)
 
-    def get_club(self):
-        club_id = self.kwargs.get('club_id')
-        club = get_object_or_404(Club, id=club_id)
-        return club
+    def get_product(self):
+        user_orders = Order.objects.filter(user=self.request.user)
+        user_product = []
+        for user_order in user_orders:
+            if user_order.status == 'PREPAYMENT':
+                user_product.append(user_order.product)
+
+        product = reduce(or_, [Q(pk=product.pk) for product in user_product])
+        return product

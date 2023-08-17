@@ -21,6 +21,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'seller',
             'end_at',
             'is_sellable',
+            'review_score',
         )
 
     def get_is_sellable(self, obj):

@@ -56,6 +56,7 @@ PROJECT_APPS = [
     'review',
     'seller',
     'notification',
+    'service',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PACKAGE_APPS + PROJECT_APPS
