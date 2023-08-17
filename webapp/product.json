@@ -1,0 +1,257 @@
+[
+  {
+    "model": "product.product",
+    "pk": 1,
+    "fields": {
+      "created_at": "2023-08-17T17:49:49.273Z",
+      "updated_at": "2023-08-17T18:06:17.061Z",
+      "name": "냉장고에 차곡차곡, 반찬통 세트",
+      "intro": "반찬통",
+      "price": 14500,
+      "category": "LIFE",
+      "thumbnail": "product1.jpg",
+      "video": "https://player.vimeo.com/external/855322039.m3u8?s=ceef7dde440b00ed6cfce076c2eb2196121bde3a&logging=false",
+      "seller": 1,
+      "end_at": "2023-08-21T17:49:03Z",
+      "tag": "gathering life etc"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 2,
+    "fields": {
+      "created_at": "2023-08-17T17:50:56.010Z",
+      "updated_at": "2023-08-17T18:06:35.747Z",
+      "name": "이판저판 뒤집어요, 온오프후라이팬 함께구매해요",
+      "intro": "후라이팬",
+      "price": 23900,
+      "category": "LIFE",
+      "thumbnail": "product2.jpg",
+      "video": "https://player.vimeo.com/external/855321694.m3u8?s=af522eb5f455627503daf50ad4b66bde384f64cd&logging=false",
+      "seller": 1,
+      "end_at": "2023-08-21T17:50:45Z",
+      "tag": "gathering life etc"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 3,
+    "fields": {
+      "created_at": "2023-08-17T17:51:41.741Z",
+      "updated_at": "2023-08-17T18:06:57.034Z",
+      "name": "손주 소풍갈 때 가방에 쏘옥, 김밥 담는 밀폐용기 공동구매합니다",
+      "intro": "밀폐용기",
+      "price": 7900,
+      "category": "FOOD",
+      "thumbnail": "product3.jpg",
+      "video": "https://player.vimeo.com/external/855321718.m3u8?s=9eabb815b79ed8da5143cbc5a6d71aff03d2422c&logging=false",
+      "seller": 3,
+      "end_at": "2023-08-22T09:00:00Z",
+      "tag": "gathering life etc"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 4,
+    "fields": {
+      "created_at": "2023-08-17T17:52:57.085Z",
+      "updated_at": "2023-08-17T18:07:27.484Z",
+      "name": "시원한 바람이 솔솔, 소용돌이 무선 선풍기",
+      "intro": "선풍기",
+      "price": 29800,
+      "category": "DIGITAL",
+      "thumbnail": "product4.jpg",
+      "video": "https://player.vimeo.com/external/855321833.m3u8?s=fd0e3916913f2ca9dfdbbbf12f2095f9eef5da11&logging=false",
+      "seller": 1,
+      "end_at": "2023-08-22T15:00:00Z",
+      "tag": "gathering economic sports"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 5,
+    "fields": {
+      "created_at": "2023-08-17T17:54:02.603Z",
+      "updated_at": "2023-08-17T18:07:44.805Z",
+      "name": "오르락내리락 초경량 라이딩 등산 가방",
+      "intro": "등산가",
+      "price": 39000,
+      "category": "SPORTS",
+      "thumbnail": "product5.jpg",
+      "video": "https://player.vimeo.com/external/855321799.m3u8?s=0a8af26bf4cf8cde686e1e986a857a69b0831854&logging=false",
+      "seller": 5,
+      "end_at": "2023-08-25T15:00:00Z",
+      "tag": "sprots biology health"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 6,
+    "fields": {
+      "created_at": "2023-08-17T17:55:07.005Z",
+      "updated_at": "2023-08-17T18:08:08.825Z",
+      "name": "들숨날숨 책임져요, 자외선 차단 마스크 함께구매",
+      "intro": "마스크",
+      "price": 5990,
+      "category": "FASHION",
+      "thumbnail": "product6.jpg",
+      "video": "https://player.vimeo.com/external/855321922.m3u8?s=ecefa8f11bedc3b4e75868cca68531be62210912&logging=false",
+      "seller": 6,
+      "end_at": "2023-08-29T09:00:00Z",
+      "tag": "daily culture life"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 7,
+    "fields": {
+      "created_at": "2023-08-17T17:56:13.078Z",
+      "updated_at": "2023-08-17T18:08:35.574Z",
+      "name": "예쁘다고 수국도 수군대요, 캔디박스 수국 함께구매",
+      "intro": "수국",
+      "price": 34900,
+      "category": "ANIMAL",
+      "thumbnail": "product7.jpg",
+      "video": "https://player.vimeo.com/external/855321762.m3u8?s=5852fc50461b49a4ca8481603778a84892b780ea&logging=false",
+      "seller": 7,
+      "end_at": "2023-08-22T15:00:00Z",
+      "tag": "biology daily etc"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 8,
+    "fields": {
+      "created_at": "2023-08-17T17:56:53.155Z",
+      "updated_at": "2023-08-17T18:08:53.994Z",
+      "name": "피부에 차오르는 금빛 향연, 금비누 함께구매해봐요",
+      "intro": "",
+      "price": 14300,
+      "category": "FASHION",
+      "thumbnail": "product8.jpg",
+      "video": "https://player.vimeo.com/external/855321669.m3u8?s=13b55f9046d9f622d99e9202f2415fbc8c6d6cad&logging=false",
+      "seller": 7,
+      "end_at": "2023-08-23T15:00:00Z",
+      "tag": "life daily culture"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 9,
+    "fields": {
+      "created_at": "2023-08-17T17:58:16.573Z",
+      "updated_at": "2023-08-17T18:09:11.629Z",
+      "name": "빈틈없는 나의 투명 가방, 위생지퍼백 함께구매 알림",
+      "intro": "지퍼백",
+      "price": 4850,
+      "category": "LIFE",
+      "thumbnail": "product9.jpg",
+      "video": "https://player.vimeo.com/external/855321893.m3u8?s=6d75809a056ac0b432433393cc0713b41d4b81d8&logging=false",
+      "seller": 2,
+      "end_at": "2023-08-22T15:00:00Z",
+      "tag": "life economic culture"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 10,
+    "fields": {
+      "created_at": "2023-08-17T17:59:29.236Z",
+      "updated_at": "2023-08-17T18:09:27.388Z",
+      "name": "뽀송뽀송 엠보 물티슈, 마르지 않아요",
+      "intro": "물티슈",
+      "price": 1980,
+      "category": "TRAVEL",
+      "thumbnail": "product10.jpg",
+      "video": "https://player.vimeo.com/external/855322065.m3u8?s=62449a5c223aa5b2325b0198f4e2a6a11850896a&logging=false",
+      "seller": 5,
+      "end_at": "2023-08-22T15:00:00Z",
+      "tag": "gathering life sports"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 11,
+    "fields": {
+      "created_at": "2023-08-17T18:01:22.980Z",
+      "updated_at": "2023-08-17T18:09:40.694Z",
+      "name": "요즘 바퀜 없는 사람도 있어? 냉장고 필수 아이템, 바퀜 공구 오픈",
+      "intro": "",
+      "price": 32490,
+      "category": "CROSSBORDER",
+      "thumbnail": "product11.jpg",
+      "video": "https://player.vimeo.com/external/855321872.m3u8?s=a07c6216d633d5baee5ae25e35274d148e95b7c5&logging=false",
+      "seller": 3,
+      "end_at": "2023-08-19T15:00:00Z",
+      "tag": "daily culture life"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 12,
+    "fields": {
+      "created_at": "2023-08-17T18:02:21.209Z",
+      "updated_at": "2023-08-17T18:09:59.853Z",
+      "name": "지압볼 밟고 내 건강 꽃길만 걸어요, 지압볼 구매 오픈",
+      "intro": "지압볼",
+      "price": 2390,
+      "category": "SPORTS",
+      "thumbnail": "product12.jpg",
+      "video": "https://player.vimeo.com/external/855321740.m3u8?s=b6eedc7c885a68c1eaa62d0a20dce592c598937e&logging=false",
+      "seller": 4,
+      "end_at": "2023-08-31T15:00:00Z",
+      "tag": "daily culture sports"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 13,
+    "fields": {
+      "created_at": "2023-08-17T18:03:49.879Z",
+      "updated_at": "2023-08-17T18:10:28.071Z",
+      "name": "식기 건조대만 있으면 설거지 잘할텐데, 트로이 식기건조대 오픈",
+      "intro": "건조",
+      "price": 27840,
+      "category": "FURNITURE",
+      "thumbnail": "product13.jpg",
+      "video": "https://player.vimeo.com/external/855321978.m3u8?s=8f630ddece95742c8289248456477678c60250d2&logging=false",
+      "seller": 5,
+      "end_at": "2023-09-04T15:00:00Z",
+      "tag": "life daily religion"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 14,
+    "fields": {
+      "created_at": "2023-08-17T18:05:05.818Z",
+      "updated_at": "2023-08-17T18:10:50.642Z",
+      "name": "따끈따끈 한솥밥 먹는 사이, 한솥밥솥",
+      "intro": "한솥",
+      "price": 79000,
+      "category": "DIGITAL",
+      "thumbnail": "product14.jpg",
+      "video": "https://player.vimeo.com/external/855322013.m3u8?s=8ce764c4d3abf114f9ba93d3f53858d91649563d&logging=false",
+      "seller": 1,
+      "end_at": "2023-08-30T15:00:00Z",
+      "tag": "health life religion"
+    }
+  },
+  {
+    "model": "product.product",
+    "pk": 15,
+    "fields": {
+      "created_at": "2023-08-17T18:05:56.096Z",
+      "updated_at": "2023-08-17T18:11:12.146Z",
+      "name": "[차도남 도전] 차오르는 냉기, 쿨한 나의 목풍기",
+      "intro": "목풍기",
+      "price": 13250,
+      "category": "LIFE",
+      "thumbnail": "product15.jpg",
+      "video": "https://player.vimeo.com/external/855321951.m3u8?s=02f06b57b61bc66c141371f1e59838814aa7941b&logging=false",
+      "seller": 1,
+      "end_at": "2023-08-19T15:00:00Z",
+      "tag": "daily culture life"
+    }
+  }
+]
