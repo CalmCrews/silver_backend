@@ -22,7 +22,6 @@ class Seller(BaseModel):
 
     business_image = models.ImageField(
         verbose_name='판매자 이미지',
-        upload_to='business_image',
         null=True,
         blank=True,
     )
@@ -43,4 +42,3 @@ class Seller(BaseModel):
 
     def __str__(self):
         return self.name
-
