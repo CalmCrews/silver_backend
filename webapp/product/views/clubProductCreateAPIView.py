@@ -36,7 +36,6 @@ class ClubProductCreateAPIView(CreateAPIView):
             'category': "GROUPBUY",
             'clubproduct': f"{club_product}"
         }
-        print(notification_data)
         notification_serializer = NotificationSerializer(data=notification_data)
         if notification_serializer.is_valid():
             notification_serializer.save()
