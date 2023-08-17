@@ -1,3 +1,4 @@
+from django.utils import timezone
 from requests import Response
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
@@ -18,6 +19,8 @@ class AllClubProductListAPIView(ListAPIView):
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
+        current_datetime = timezone.now()
+        queryset = queryset.filter(product__end_at__gte=current_datetime)
         serializer = self.get_serializer(queryset, many=True)
         updated_data = []
 
