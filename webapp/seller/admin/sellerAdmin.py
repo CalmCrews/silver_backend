@@ -6,6 +6,7 @@ from seller.models import Seller
 @admin.register(Seller)
 class SellerAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'name',
         'represent',
         'business_image',
