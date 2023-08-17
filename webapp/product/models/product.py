@@ -1,7 +1,9 @@
 from django.db import models
+from django.db.models import Avg
 from django.utils import timezone
 
 from config.models import BaseModel
+from review.models import Review
 from seller.models import Seller
 
 PRODUCT_CATEGORY_CHOICES = (
@@ -83,12 +85,22 @@ class Product(BaseModel):
         null=False,
         blank=True,
     )
+
     @property
     def time_passed(self):
         time_passed = self.end_at > timezone.now()
         if time_passed:
             return False
         return True
+
+    @property
+    def review_score(self):
+        rating = Review.objects.filter(order__product__product=self).values('order').distinct().aggregate(Avg('rating'))
+        if rating['rating__avg']:
+            score = rating['rating_avg']
+            return score
+        else:
+            return 0
 
     def __str__(self):
         return self.name

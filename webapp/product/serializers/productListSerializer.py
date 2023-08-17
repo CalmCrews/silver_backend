@@ -5,6 +5,7 @@ from product.models import Product
 
 class ProductListSerializer(serializers.ModelSerializer):
     seller = serializers.SerializerMethodField()
+
     class Meta:
         model = Product
         fields = (
@@ -15,6 +16,7 @@ class ProductListSerializer(serializers.ModelSerializer):
             'thumbnail',
             'seller',
             'end_at',
+            'review_score',
         )
 
     def get_seller(self, obj):
