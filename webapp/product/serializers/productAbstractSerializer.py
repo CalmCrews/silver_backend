@@ -14,4 +14,6 @@ class ProductAbstractSerializer(serializers.ModelSerializer):
             'seller',
             'end_at',
             'review_score',
+            'thumbnail',
+            'video',
         )
