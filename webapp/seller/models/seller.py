@@ -20,7 +20,7 @@ class Seller(BaseModel):
         max_length=60,
     )
 
-    business_image = models.ImageField(
+    business_image = models.URLField(
         verbose_name='판매자 이미지',
         null=True,
         blank=True,

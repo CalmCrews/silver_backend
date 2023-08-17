@@ -8,7 +8,6 @@ services:
       - staticfiles:/src/static
       - mediafiles:/src/media
       - ./log:/var/log/
-      - ./webapp/business_image:/src/media
     build:
       context: ./webapp
       dockerfile: ./Dockerfile
@@ -44,7 +43,6 @@ services:
       - staticfiles:/static
       - mediafiles:/media
       - ./log:/var/log/nginx
-      - ./webapp/business_image:/media
   db:
     image: postgres
     expose:

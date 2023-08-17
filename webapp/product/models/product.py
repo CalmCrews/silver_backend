@@ -54,7 +54,7 @@ class Product(BaseModel):
         blank=True,
     )
 
-    thumbnail = models.ImageField(
+    thumbnail = models.URLField(
         verbose_name='상품 썸네일',
         null=False,
         blank=True,
