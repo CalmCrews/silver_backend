@@ -34,8 +34,9 @@ class ClubProductCreateAPIView(CreateAPIView):
             'title': "공동구매 초대장을 받았어요. 공동구매에 참여해볼까요?",
             'message': f"{club.name} 모임원이 신청한 함께구매 상품을 확인해보세요!",
             'category': "GROUPBUY",
-            'clubproudt': f"{club_product}"
+            'clubproduct': f"{club_product}"
         }
+        print(notification_data)
         notification_serializer = NotificationSerializer(data=notification_data)
         if notification_serializer.is_valid():
             notification_serializer.save()
