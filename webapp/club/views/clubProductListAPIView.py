@@ -2,7 +2,7 @@ from django.utils import timezone
 from rest_framework.generics import ListAPIView, get_object_or_404
 from rest_framework.response import Response
 
-from club.models import ClubProduct, Club
+from club.models import ClubProduct, Club, UserClub
 from club.serializers import ClubProductAbstractSerializer
 
 
@@ -13,6 +13,12 @@ class ClubProductListAPIView(ListAPIView):
     def get_queryset(self):
         queryset = self.queryset.filter(club=self.get_club())
         return queryset
+
+    def get(self, request, *args, **kwargs):
+        user_club = UserClub.objects.filter(user=request.user, club=self.get_club())
+        if user_club.exists():
+            return self.list(request, *args, **kwargs)
+        return Response({'message': '참여하고 있는 모임이 아닙니다.'})
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())

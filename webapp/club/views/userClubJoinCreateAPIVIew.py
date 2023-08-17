@@ -52,6 +52,11 @@ class UserClubJoinCreateAPIView(CreateAPIView):
             user_club_serializer = UserClubSerializer(data=user_club_data)
             user_club_serializer.is_valid(raise_exception=True)
             user_club_serializer.save()
+            if club.level == 0:
+                num_of_memebers = UserClub.objects.filter(club=club.id).values('user').distinct().count()
+                if num_of_memebers >= 3:
+                    club.level = 1
+                    club.save()
             return user_club_serializer
         else:
             return Response({'message': '이미 참여중인 모임입니다.', 'club': club.id}, status=status.HTTP_400_BAD_REQUEST)

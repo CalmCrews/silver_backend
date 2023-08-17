@@ -1,7 +1,7 @@
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
 
-from club.models import ClubProduct
+from club.models import ClubProduct, UserClub
 from club.serializers import ClubProductSerializer
 
 
@@ -12,6 +12,14 @@ class ClubProductRetrieveAPIView(RetrieveAPIView):
 
     def get(self, request, *args, **kwargs):
         instance = self.get_object()
+        is_my_club_product = UserClub.objects.filter(club=instance.club, user=request.user).exists()
+        if is_my_club_product == False:
+            res = {
+                'message': '모임에 추가된 상품이 아닙니다.',
+                'product_id': instance.product.id,
+                'product_name': instance.product.name,
+            }
+            return Response(res)
         serializer = self.get_serializer(instance)
         participant_count = instance.participant_count
         quantity_sum = instance.quantity_sum
