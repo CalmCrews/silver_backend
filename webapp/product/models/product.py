@@ -60,7 +60,7 @@ class Product(BaseModel):
         blank=True,
     )
 
-    video = models.FileField(
+    video = models.URLField(
         verbose_name='상품 영상',
         null=False,
         blank=True,
