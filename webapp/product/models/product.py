@@ -95,8 +95,12 @@ class Product(BaseModel):
 
     @property
     def review_score(self):
-        score = Review.objects.filter(order__product__product=self).values('order').distinct().aggregate(Avg('rating'))
-        return score
+        rating = Review.objects.filter(order__product__product=self).values('order').distinct().aggregate(Avg('rating'))
+        if rating['rating__avg']:
+            score = rating['rating_avg']
+            return score
+        else:
+            return 0
 
     def __str__(self):
         return self.name
