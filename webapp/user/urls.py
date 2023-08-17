@@ -14,4 +14,5 @@ urlpatterns = [
     path('<int:user_id>/charge/', ChargeBalanceAPIView.as_view()),
     path('nickname/', UserNicknameUpdateAPIView.as_view()),
     path('duplicateNickname/', DuplicateNickameAPIView.as_view()),
+    path('userinfo', UserinfoAPIView.as_view()),
 ]
