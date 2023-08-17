@@ -71,7 +71,6 @@ class Product(BaseModel):
         on_delete=models.CASCADE,
         verbose_name='판매자',
         null=False,
-        blank=True,
     )
 
     end_at = models.DateTimeField(

@@ -3,7 +3,7 @@ from rest_framework.exceptions import NotFound
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
 
-from club.models import ClubProduct
+from club.models import ClubProduct, Club
 from order.models import Order
 from order.serializers import OrderSerializer
 from product.models import Product
@@ -13,10 +13,11 @@ class OrderListCreateAPIView(ListCreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        queryset = queryset.filter(user=self.request.user)
-        return queryset
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        queryset = queryset.filter(user=self.request.user, product=self.get_club_product())
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
     def perform_create(self, serializer):
         club_product = self.get_club_product()
@@ -55,7 +56,9 @@ class OrderListCreateAPIView(ListCreateAPIView):
     def get_club_product(self):
         product_id = self.kwargs.get('product_id')
         product = get_object_or_404(Product, id=product_id)
-        club_product = ClubProduct.objects.filter(product=product)
+        club_id = self.kwargs.get('club_id')
+        club = get_object_or_404(Club, id=club_id)
+        club_product = ClubProduct.objects.filter(product=product, club=club)
         if not club_product.exists():
             return NotFound("해당 모임에 등록된 상품이 아닙니다.")
         return club_product.first()

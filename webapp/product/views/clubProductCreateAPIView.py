@@ -20,6 +20,9 @@ class ClubProductCreateAPIView(CreateAPIView):
         if not validate_if_my_club.exists():
             return Response({'message': '본인의 모임에만 상품을 추가할 수 있습니다.'}, status=400)
         club = get_object_or_404(Club, id=club)
+        already_club_product = ClubProduct.objects.filter(club=club, product=self.get_product())
+        if already_club_product.exists():
+            return Response({'message': '이미 모임에 등록된 상품입니다.'}, status=400)
         self.perform_create(serializer, club)
 
         headers = self.get_success_headers(serializer.data)
