@@ -1,0 +1,167 @@
+[
+{
+    "model": "review.review",
+    "pk": 1,
+    "fields": {
+        "created_at": "2023-08-18T13:51:02.400Z",
+        "updated_at": "2023-08-18T13:51:02.400Z",
+        "order": 1,
+        "content": "반찬통 싸게 사서 반찬을 너무 많이했네요! 좋아요!",
+        "rating": "4.8"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 2,
+    "fields": {
+        "created_at": "2023-08-18T13:51:48.355Z",
+        "updated_at": "2023-08-18T13:51:48.355Z",
+        "order": 2,
+        "content": "후라이팬으로, 계란 후라이 열심히 먹었습니다~",
+        "rating": "3.7"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 3,
+    "fields": {
+        "created_at": "2023-08-18T13:52:10.986Z",
+        "updated_at": "2023-08-18T13:52:10.986Z",
+        "order": 3,
+        "content": "밀폐 용기는 쪼금 아쉽네요,,,",
+        "rating": "2.8"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 4,
+    "fields": {
+        "created_at": "2023-08-18T13:52:35.611Z",
+        "updated_at": "2023-08-18T13:52:35.611Z",
+        "order": 4,
+        "content": "이런 상품이 있는 지 처음 알았습니다~ 덕분에 잘 사용하고 있어요.",
+        "rating": "4.4"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 5,
+    "fields": {
+        "created_at": "2023-08-18T13:53:09.702Z",
+        "updated_at": "2023-08-18T13:53:09.702Z",
+        "order": 5,
+        "content": "등산 가방 잘 사용하고 있습니다~ 가벼워서 좋아요~",
+        "rating": "4.3"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 6,
+    "fields": {
+        "created_at": "2023-08-18T13:53:36.485Z",
+        "updated_at": "2023-08-18T13:53:36.485Z",
+        "order": 6,
+        "content": "마스크가 생각보다 숨쉬기 불편하네요,,,",
+        "rating": "3.2"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 7,
+    "fields": {
+        "created_at": "2023-08-18T13:54:01.966Z",
+        "updated_at": "2023-08-18T13:54:01.966Z",
+        "order": 7,
+        "content": "너무 예쁘네여~",
+        "rating": "4.9"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 8,
+    "fields": {
+        "created_at": "2023-08-18T13:54:34.724Z",
+        "updated_at": "2023-08-18T13:54:34.724Z",
+        "order": 8,
+        "content": "생각보다 향이 별로에요,,,",
+        "rating": "2.8"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 9,
+    "fields": {
+        "created_at": "2023-08-18T13:55:29.372Z",
+        "updated_at": "2023-08-18T13:55:29.372Z",
+        "order": 9,
+        "content": "지퍼백 많아서 좋아요.",
+        "rating": "4.1"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 10,
+    "fields": {
+        "created_at": "2023-08-18T13:56:09.783Z",
+        "updated_at": "2023-08-18T13:56:09.783Z",
+        "order": 10,
+        "content": "물티슈 때문에 피부 망가졌어요.",
+        "rating": "1.2"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 11,
+    "fields": {
+        "created_at": "2023-08-18T13:56:34.315Z",
+        "updated_at": "2023-08-18T13:56:34.315Z",
+        "order": 11,
+        "content": "바퀜이 뭔지 몰랐는데, 덕분에 잘 샀습니다.",
+        "rating": "4.7"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 12,
+    "fields": {
+        "created_at": "2023-08-18T13:56:49.754Z",
+        "updated_at": "2023-08-18T13:56:49.754Z",
+        "order": 12,
+        "content": "지압볼 좋아요",
+        "rating": "4.3"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 13,
+    "fields": {
+        "created_at": "2023-08-18T13:57:05.401Z",
+        "updated_at": "2023-08-18T13:57:05.401Z",
+        "order": 13,
+        "content": "덕분에 잘 사용해요",
+        "rating": "4.9"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 14,
+    "fields": {
+        "created_at": "2023-08-18T13:57:21.608Z",
+        "updated_at": "2023-08-18T13:57:21.608Z",
+        "order": 14,
+        "content": "기계가 좋네요",
+        "rating": "4.5"
+    }
+},
+{
+    "model": "review.review",
+    "pk": 15,
+    "fields": {
+        "created_at": "2023-08-18T13:57:57.902Z",
+        "updated_at": "2023-08-18T13:57:57.902Z",
+        "order": 15,
+        "content": "처음 샀는데 잘 돼서 좋아요,,,",
+        "rating": "4.0"
+    }
+}
+]
