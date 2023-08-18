@@ -17,7 +17,7 @@ class AllClubProductListAPIView(ListAPIView):
         club_ids = [user_club.club.pk for user_club in user_clubs]
         queryset = self.queryset.filter(club__id__in=club_ids)
         club_product_id = [query.id for query in queryset]
-        already_buy = Order.objects.filter(user=self.request.user, product__in=club_product_id)
+        already_buy = Order.objects.filter(product__in=club_product_id)
         already_buy_ids = [buy.product.id for buy in already_buy]
         queryset = queryset.exclude(id__in=already_buy_ids).order_by('product__end_at')
         return queryset
