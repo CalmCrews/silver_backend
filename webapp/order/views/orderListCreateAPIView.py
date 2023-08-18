@@ -15,7 +15,7 @@ class OrderListCreateAPIView(ListCreateAPIView):
 
     def get(self, request, *args, **kwargs):
         queryset = self.get_queryset()
-        queryset = queryset.filter(user=self.request.user, product=self.get_club_product())
+        queryset = queryset.filter(user=self.request.user, product=self.get_club_product()).order_by('-created_at')
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
@@ -27,7 +27,6 @@ class OrderListCreateAPIView(ListCreateAPIView):
             initial_price=club_product.product.price,
             status='PREPAYMENT',
         )
-
         if serializer.instance.final_price is None:
             serializer.instance.final_price = club_product.product.price
             serializer.save()
@@ -49,6 +48,9 @@ class OrderListCreateAPIView(ListCreateAPIView):
     def post(self, request, *args, **kwargs):
         club_product = self.get_club_product()
         product = club_product.product
+        already_product = Order.objects.filter(user=self.request.user, product=club_product)
+        if already_product.exists():
+            return Response({'message': '이미 구매한 상품입니다.'})
         if product.time_passed:
             return Response({'message': '해당 상품의 판매기간이 아닙니다.'}, status=400)
         return self.create(request, *args, **kwargs)

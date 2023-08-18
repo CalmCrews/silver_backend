@@ -14,6 +14,8 @@ class ClubProductSerializer(serializers.ModelSerializer):
     participants = serializers.SerializerMethodField()
     seller = serializers.SerializerMethodField()
 
+    # is_not_buyable = serializers.SerializerMethodField()
+
     class Meta:
         model = ClubProduct
         fields = (
@@ -40,3 +42,6 @@ class ClubProductSerializer(serializers.ModelSerializer):
     def get_seller(self, obj):
         seller = obj.product.seller
         return SellerSerializer(seller).data
+
+    # def is_not_buyable(self):
+    #     return False

@@ -3,6 +3,7 @@ from rest_framework.response import Response
 
 from club.models import ClubProduct, UserClub
 from club.serializers import ClubProductSerializer
+from order.models import Order
 
 
 class ClubProductRetrieveAPIView(RetrieveAPIView):
@@ -20,6 +21,7 @@ class ClubProductRetrieveAPIView(RetrieveAPIView):
                 'product_name': instance.product.name,
             }
             return Response(res)
+        is_not_buyable = Order.objects.filter(user=self.request.user, product=instance).exists()
         serializer = self.get_serializer(instance)
         participant_count = instance.participant_count
         quantity_sum = instance.quantity_sum
@@ -34,6 +36,7 @@ class ClubProductRetrieveAPIView(RetrieveAPIView):
             'current_price': current_price,
             'discount_rate': discount_rate,
             'achievement_rate': achievement_rate,
+            'is_not_buyable': is_not_buyable,
         }
 
         # Create a new dictionary for the response data
