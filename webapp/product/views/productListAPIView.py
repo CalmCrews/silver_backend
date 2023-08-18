@@ -4,6 +4,7 @@ from rest_framework.response import Response
 
 from product.models import Product
 from product.serializers import ProductListSerializer
+from rest_framework import filters
 
 
 class ProductListAPIView(ListAPIView):
@@ -12,6 +13,10 @@ class ProductListAPIView(ListAPIView):
     filterset_fields = [
         'category',
     ]
+    filter_backends = [
+        filters.SearchFilter,
+    ]
+    search_fields = ['name']
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
